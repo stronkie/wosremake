@@ -139,7 +139,8 @@ KEEP_INFO = {   # keepsake: (label, icon, look text)
     'chicken': ('rubber chicken', 'chicken', 'A rubber chicken with a pulley in the middle. Everybody needs one. I am never letting go of it.'),
     'shell': ('singing shell', 'shell', 'A spiral shell that hums softly. Thanks to it I understand the Stronkies. '
                                          'I will never give it away.'),
-    'medal': ('bronze medal', 'medal', 'A bronze medal. I earned this one.'),
+    'spikes': ('spiked boots', 'spikes', 'Boots with iron spikes under the soles. They carried me over the ice bridge. '
+                                        'I am keeping them.'),
     'compass': ('star compass', 'compass', 'A little compass. Its needle always points to Stronkie.'),
 }
 

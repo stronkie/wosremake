@@ -200,6 +200,35 @@ def glasses():
     return P.finish()
 
 
+def snowball():
+    P = IPen()
+    P.ellipse(16, 12, 8, 8, WHITE)
+    P.ellipse(13, 9, 3, 3, SENT)
+    P.ellipse(19, 15, 3, 2, GREY)
+    return P.finish()
+
+
+def spikes():
+    P = IPen()
+    for x in (4, 17):
+        P.rect(x + 2, 4, x + 8, 15, BROWN)
+        P.rect(x, 15, x + 11, 19, LBROWN)
+        for k in range(4):
+            P.rect(x + k * 3, 19, x + k * 3 + 1, 22, WHITE)
+    return P.finish()
+
+
+def stardust():
+    P = IPen()
+    P.ellipse(16, 15, 9, 6, GREY)
+    for x, y in ((12, 13), (17, 11), (21, 15), (14, 17), (19, 18), (16, 14)):
+        P.dot(x, y, HI)
+    P.dot(9, 8, GOLD)
+    P.dot(24, 6, GOLD)
+    return P.finish()
+
+
+ICONS.update({'snowball': snowball, 'spikes': spikes, 'stardust': stardust})
 ICONS.update({'extinguisher': extinguisher, 'fruit': fruit, 'monkey': monkey, 'map': scroll_map, 'banner': banner,
               'glider': glider, 'glasses': glasses, 'powercrystal': lambda: crystal(PINK, WHITE)})
 ICONS.update({'burger': burger, 'coin': coin, 'cash': lambda: coin(3), 'napkin': napkin, 'fuelcell': fuelcell,

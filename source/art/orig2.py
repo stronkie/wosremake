@@ -213,5 +213,73 @@ def tower(banner=True):
 
 
 ROOM_ART.update({'wreck': wreck, 'crash': crash, 'jungle': jungle, 'market': market, 'tower': tower})
+# ------------------------------------------------------------- disk 5: the Crystal Mountains, the Sky Temple
+def icecave(boots=False):
+    cv = base('icecave')
+    if boots:
+        for x in (66, 78):
+            cv.fill(cv.rect(x, 140, x + 8, 154), '#5a3a20')
+            cv.fill(cv.rect(x - 1, 152, x + 11, 156), '#909090')
+            for k in range(4):
+                cv.fill(cv.rect(x + k * 3, 156, x + k * 3 + 1, 158), '#d0d0d0')
+    return cv
+
+
+def soldier(cv, x, y):
+    cv.fill(cv.rect(x - 5, y - 26, x + 5, y - 8), '#141418')
+    cv.fill(cv.ellipse(x, y - 30, 4.5, 5), '#1c1c22')
+    cv.fill(cv.rect(x - 2, y - 31, x + 2, y - 29), '#c03020')
+    cv.fill(cv.rect(x - 5, y - 8, x - 1, y), '#101014')
+    cv.fill(cv.rect(x + 1, y - 8, x + 5, y), '#101014')
+    cv.fill(cv.line([(x + 5, y - 20), (x + 12, y - 26)], 1.5), '#606870')
+
+
+def camp(soldiers=False):
+    cv = base('camp')
+    if soldiers:
+        soldier(cv, 188, 128)
+        soldier(cv, 236, 128)
+    return cv
+
+
+def tent(amulet=False):
+    cv = base('tent')
+    if amulet:
+        amulet_on_console(cv, 136, 112)
+    return cv
+
+
+def statues(mirror=True):
+    cv = base('statues')
+    if not mirror:
+        m = cv.ellipse(238, 93, 11, 15)
+        cv.fill(m, '#44444e')
+        cv.fill(cv.ellipse(235, 88, 5, 6), '#55555f')
+    return cv
+
+
+def mirrors(mirror=False):
+    cv = base('mirrors')
+    if mirror:
+        ring = cv.ellipse(160, 108, 9, 10)
+        cv.fill(ring, '#d0a030')
+        cv.fill(cv.ellipse(160, 108, 7, 8), '#e8eef8')
+        cv.glow(cv.ellipse(160, 108, 7, 8), '#ffffff', 8, 0.6)
+    return cv
+
+
+def starbridge(bridge=False):
+    cv = base('starbridge')
+    if bridge:
+        for k in range(40):
+            t = k / 39
+            x, y = 104 + t * 150, 138 - t * 46
+            cv.fill(cv.ellipse(x, y, 4, 2), '#f0d060')
+            cv.glow(cv.ellipse(x, y, 2, 1), '#fff0a0', 3, 0.5)
+    return cv
+
+
+ROOM_ART.update({'icecave': icecave, 'camp': camp, 'tent': tent, 'statues': statues, 'mirrors': mirrors,
+                 'starbridge': starbridge})
 ROOM_ART.update({'cockpit': cockpit, 'galley': galley, 'engine': engine, 'cargo': cargo, 'airlock': airlock,
                  'stcorr': stcorr, 'maproom': maproom})
