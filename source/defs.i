@@ -118,7 +118,7 @@ V_TALK    = 8
 V_PULL    = 9
 
 MAXINV    = 24
-MAXACT    = 12
+MAXACT    = 16
 MAXDIRTY  = 24
 NSLOTS    = 4               ; script threads
 WALK_W    = 80              ; walk mask: 4x4 pixel cells

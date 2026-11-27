@@ -464,7 +464,8 @@ def build_data():
     # ---- actors at the start
     E('actor_init')
     start_room = game.START_ACTORS
-    for i in range(12):
+    assert len(game.ACTORS) <= 16, f'{len(game.ACTORS)} actors: the engine has 16 (MAXACT)'
+    for i in range(16):
         if i < len(game.ACTORS):
             nm, cost, col, _ = game.ACTORS[i]
             r, x, y, d = start_room.get(nm, (None, 0, 0, 2))

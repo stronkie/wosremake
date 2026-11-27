@@ -112,7 +112,7 @@ def main():
         top0 = S.inv_top
         S.step(st)
         changed = S.inv_top != top0 or S.inv != inv_before
-        out.extend(['k 56', 'w 1', 'k 56', 'w 2'])
+        out.extend(['k 56', 'w 1'] * 4 + ['w 1'])
         if c == 'walk':
             click(*tgt[0]())
             out.append('w 6')
