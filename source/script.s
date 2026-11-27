@@ -601,7 +601,7 @@ random                              ; d1 = n -> d0 = 0..n-1
 ;  chapter's flags and things they are; flags the chapter doesn't know
 ;  are kept as they are, for the chapters after it.
 ;----------------------------------------------------------------------
-STORY_SIZE = 4+16+16
+STORY_SIZE = 4+16+16+4             ; 'WSTY', flags, items, check code
 
 op_storyload                        ; .w 0 (this drawer) / 1 (the last chapter's disk), .w flag (set if it worked)
         move.w  (a4)+,d0
@@ -639,6 +639,10 @@ op_storyload                        ; .w 0 (this drawer) / 1 (the last chapter's
         cmp.l   #STORY_SIZE,d5
         bne     .fail
         cmp.l   #'WSTY',story_tmp
+        bne     .fail
+        lea     story_tmp,a0        ; the check code: a story file made or changed by hand is refused
+        bsr     story_code
+        cmp.l   story_tmp+36,d0
         bne     .fail
         lea     story_tmp,a0
         lea     story_buf,a1
@@ -779,6 +783,22 @@ story_collect                       ; this chapter's flags and inventory -> stor
         bset    d3,(a0,d1.w)
         bra     .lp
 .x      move.l  #'WSTY',story_buf
+        lea     story_buf,a0
+        bsr     story_code
+        move.l  d0,story_buf+36
+        rts
+
+story_code                          ; a0 = story (36 bytes) -> d0 = its check code
+        movem.l d1-d2/a0,-(sp)
+        move.l  #$5354524B,d0
+        moveq   #36-1,d2
+.c      rol.l   #5,d0
+        moveq   #0,d1
+        move.b  (a0)+,d1
+        eor.l   d1,d0
+        add.l   #$9E3779B9,d0
+        dbf     d2,.c
+        movem.l (sp)+,d1-d2/a0
         rts
 
 inv_has                             ; d0 = thing -> Z=0 if it is in the inventory

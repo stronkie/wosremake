@@ -1,0 +1,284 @@
+[
+{
+"part": 1,
+"msg": "card",
+"file": "p01_card",
+"comment": "\"Prologue, Part 2. The Manor\""
+},
+{
+"part": 2,
+"msg": "card",
+"file": "p02_card",
+"comment": "\"Prologue, Part 3. The Launch Pad\""
+},
+{
+"part": 3,
+"msg": "card",
+"file": "p03_card",
+"comment": "\"Chapter 1. Into Space\""
+},
+{
+"part": 4,
+"msg": 1,
+"file": "p04_m01",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 4,
+"msg": 3,
+"file": "p04_m03",
+"comment": "NOVA: The navigation crystal cracked during th"
+},
+{
+"part": 4,
+"msg": 4,
+"file": "p04_m04",
+"comment": "NOVA: All systems ready. engage the hyperdrive"
+},
+{
+"part": 4,
+"msg": 13,
+"file": "p04_m13",
+"comment": "NOVA: Course found. the star chart to stronkie"
+},
+{
+"part": 4,
+"msg": 16,
+"file": "p04_m16",
+"comment": "NOVA: Without navigation we could end up insid"
+},
+{
+"part": 4,
+"msg": "card",
+"file": "p04_card",
+"comment": "\"Chapter 2. The Derelict Station\""
+},
+{
+"part": 5,
+"msg": 1,
+"file": "p05_m01",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 5,
+"msg": 17,
+"file": "p05_m17",
+"comment": "NOVA: Course plotted for the world of stronkie"
+},
+{
+"part": 5,
+"msg": 18,
+"file": "p05_m18",
+"comment": "NOVA: Not without the star chart, pilot!"
+},
+{
+"part": 5,
+"msg": 19,
+"file": "p05_m19",
+"comment": "NOVA: The station has no power. find the gener"
+},
+{
+"part": 5,
+"msg": 20,
+"file": "p05_m20",
+"comment": "NOVA: Get the star chart and come back."
+},
+{
+"part": 5,
+"msg": "card",
+"file": "p05_card",
+"comment": "\"Chapter 3. Asteroid 42\""
+},
+{
+"part": 6,
+"msg": 7,
+"file": "p06_m07",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 6,
+"msg": 11,
+"file": "p06_m11",
+"comment": "NOVA: Find us a fuel cell, pilot. try the shop"
+},
+{
+"part": 6,
+"msg": 15,
+"file": "p06_m15",
+"comment": "NOVA: Mmm, premium. thank you, pilot. ready wh"
+},
+{
+"part": 6,
+"msg": 16,
+"file": "p06_m16",
+"comment": "NOVA: Fuel: full. chicken: on board. course: t"
+},
+{
+"part": 6,
+"msg": 18,
+"file": "p06_m18",
+"comment": "NOVA: The tank is empty, pilot. we won't get o"
+},
+{
+"part": 6,
+"msg": "card",
+"file": "p06_card",
+"comment": "\"Chapter 4. Space Pirates\""
+},
+{
+"part": 7,
+"msg": 10,
+"file": "p07_m10",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 7,
+"msg": 12,
+"file": "p07_m12",
+"comment": "NOVA: Main power crystal hit! we're going down"
+},
+{
+"part": 7,
+"msg": 14,
+"file": "p07_m14",
+"comment": "NOVA: The beam comes from their ship, pilot. s"
+},
+{
+"part": 7,
+"msg": 15,
+"file": "p07_m15",
+"comment": "NOVA: The beam is gone! fly, pilot, fly!"
+},
+{
+"part": 7,
+"msg": "card",
+"file": "p07_card",
+"comment": "\"Chapter 5. Landfall\""
+},
+{
+"part": 8,
+"msg": 12,
+"file": "p08_m12",
+"comment": "NOVA: I need a new power crystal, pilot. this "
+},
+{
+"part": 8,
+"msg": 13,
+"file": "p08_m13",
+"comment": "NOVA: Repairs are under way. go and make frien"
+},
+{
+"part": 8,
+"msg": 26,
+"file": "p08_m26",
+"comment": "NOVA: Thank you, pilot. the repairs will take "
+},
+{
+"part": 8,
+"msg": 29,
+"file": "p08_m29",
+"comment": "NOVA: Pilot, first find a power crystal for th"
+},
+{
+"part": 8,
+"msg": "card",
+"file": "p08_card",
+"comment": "\"Chapter 6. The Village\""
+},
+{
+"part": 9,
+"msg": "card",
+"file": "p09_card",
+"comment": "\"Chapter 7. The Crystal Mountains\""
+},
+{
+"part": 10,
+"msg": 19,
+"file": "p10_m19",
+"comment": "NOVA: Get the amulet back, pilot. the temple n"
+},
+{
+"part": 10,
+"msg": "card",
+"file": "p10_card",
+"comment": "\"Chapter 8. The Sky Temple\""
+},
+{
+"part": 11,
+"msg": "card",
+"file": "p11_card",
+"comment": "\"Chapter 9. The Star Heart\""
+},
+{
+"part": 12,
+"msg": "card",
+"file": "p12_card",
+"comment": "\"Chapter 10. Repairs\""
+},
+{
+"part": 13,
+"msg": 17,
+"file": "p13_m17",
+"comment": "NOVA: All systems green, pilot. i've tracked v"
+},
+{
+"part": 13,
+"msg": 18,
+"file": "p13_m18",
+"comment": "NOVA: Hold on, uncle edmund. we're coming."
+},
+{
+"part": 13,
+"msg": 19,
+"file": "p13_m19",
+"comment": "NOVA: No engine, no flight, pilot."
+},
+{
+"part": 13,
+"msg": "card",
+"file": "p13_card",
+"comment": "\"Chapter 11. Vex's Flagship\""
+},
+{
+"part": 14,
+"msg": 1,
+"file": "p14_m01",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 14,
+"msg": "card",
+"file": "p14_card",
+"comment": "\"Chapter 12. The Prison Deck\""
+},
+{
+"part": 15,
+"msg": 1,
+"file": "p15_m01",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 15,
+"msg": "card",
+"file": "p15_card",
+"comment": "\"Chapter 13. The Bridge\""
+},
+{
+"part": 16,
+"msg": 1,
+"file": "p16_m01",
+"comment": "NOVA: Engaging... nothing, pilot. i am not tha"
+},
+{
+"part": 16,
+"msg": "card",
+"file": "p16_card",
+"comment": "\"Epilogue. Home Again\""
+},
+{
+"part": 17,
+"msg": 4,
+"file": "p17_m04",
+"comment": "NOVA: Course plotted, pilot. whenever you're r"
+}
+]

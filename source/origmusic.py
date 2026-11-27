@@ -18,7 +18,7 @@ SONGS = json.load(open(os.path.join(HERE, 'orig', 'songs.json')))
 SR = 8287.0
 C4 = 261.6256
 DECAY_MS = [6, 24, 48, 72, 114, 168, 204, 240, 300, 750, 1500, 2400, 3000, 9000, 15000, 24000]
-VOLUME = {0x10: 44, 0x20: 32, 0x40: 32, 0x80: 50}       # by waveform
+VOLUME = {0x10: 30, 0x20: 22, 0x40: 22, 0x80: 34}       # by waveform (softer: under the speech)
 
 
 def _wave(kind, duty=0.5):

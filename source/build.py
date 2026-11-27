@@ -34,7 +34,7 @@ CACHE = os.path.join(HERE, '.cache')
 VASM = os.environ.get('VASM', '/home/claude/amiga-toolkit/vasm/vasmm68k_mot')
 TOOLKIT = os.environ.get('AMIGA_TK', '/home/claude/amiga-toolkit')
 FONT = os.path.join(HERE, 'font8x8_basic.h')    # font8x8 (public domain), as WoS II uses it
-VERSIONS = {1: 'V0.1.0'}
+VERSIONS = {1: 'V0.1.1', 2: 'V0.2.0', 3: 'V0.3.0', 4: 'V0.4.0', 5: 'V0.5.0', 6: 'V0.6.0', 7: 'V0.7.0'}
 VERSION = VERSIONS[CH]
 PREFIX = 'WOSR' if CH == 1 else f'WOSRC{CH}'        # the file names of this chapter's disk
 CHAPTER_NAMES = {1: 'Chapter One: The Prologue'}
@@ -235,9 +235,33 @@ SPEECH = {   # the spoken lines of the original game (orig/sound/say_*.spk, samp
 SFX = {'pickup': 'take'}           # sound name in the game -> the original's sampled effect
 
 
+FIB = [-34, -21, -13, -8, -5, -3, -2, -1, 0, 1, 2, 3, 5, 8, 13, 21]
+
+
+def spk_decode(b):
+    """.w samples, .w period, Fibonacci delta data -> (samples, period)"""
+    n, per = struct.unpack('>HH', b[:4])
+    d = b[4:]
+    cur = d[0] - 256 if d[0] > 127 else d[0]
+    out = []
+    for x in d[1:1 + (n + 1) // 2]:
+        for nib in (x >> 4, x & 15):
+            cur += FIB[nib]
+            out.append(cur)
+    return np.array(out[:n], np.float64), per
+
+
+SPEECH_GAIN = 2.6       # the original speech samples are soft (RMS ~20 of 127): louder, with a soft limiter
+
+
 def speech_clip(text, voice, speed):
-    """the original's speech sample for this line: .w samples, .w period, Fibonacci delta data"""
-    return open(os.path.join(ORIG, 'sound', SPEECH[text] + '.spk'), 'rb').read()
+    """the original's speech sample for this line, made louder: .w samples, .w period, Fibonacci delta data"""
+    x, per = spk_decode(open(os.path.join(ORIG, 'sound', SPEECH[text] + '.spk'), 'rb').read())
+    y = np.tanh(x / 127 * SPEECH_GAIN) / np.tanh(SPEECH_GAIN) * 124
+    y = np.round(y).astype(np.int16)
+    if len(y) % 2:
+        y = y[:-1]
+    return struct.pack('>HH', len(y), per) + sndlib.fib_encode(y)
 
 
 def orig_sfx(name):

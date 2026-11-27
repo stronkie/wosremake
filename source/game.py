@@ -129,25 +129,48 @@ DEFAULTS = {
 }
 
 CH_NAMES = {1: 'Chapter One', 2: 'Chapter Two', 3: 'Chapter Three', 4: 'Chapter Four', 5: 'Chapter Five',
-            6: 'Chapter Six'}
+            6: 'Chapter Six', 7: 'Chapter Seven'}
+
+import story as _story                           # noqa: E402
+KEEP_INFO = {   # keepsake: (label, icon, look text)
+    'paper': ('scrap of paper', 'paper', 'It reads: "I buried the winch handle so they cannot raise the key. - E." I keep it for luck.'),
+    'ration': ('space ration', 'ration', 'A grey bar wrapped in foil. My lucky ration. I will never eat it.'),
+    'feather': ('blue feather', 'feather', 'A shining blue feather. A souvenir I will keep forever.'),
+    'shell': ('sea shell', 'shell', 'A spiral shell. If I hold it to my ear I hear an ocean on a world far away.'),
+    'medal': ('bronze medal', 'medal', 'A bronze medal. I earned this one.'),
+    'compass': ('star compass', 'compass', 'A little compass. Its needle always points to Stronkie.'),
+}
+
+
+def keepsakes():
+    """the keepsakes of this disk and all disks before it: things the player carries"""
+    for n in range(1, CH + 1):
+        k = _story.KEEPSAKES.get(n)
+        if not k or k in G.objects:
+            continue
+        lab, icon, txt = KEEP_INFO[k]
+        G.thing(k, None, label=lab, icon=icon)
+        s = G.script()
+        s.say('pilot', txt)
+        G.on(k, 'look', s)
 
 
 def story_start(s):
-    """the start of a chapter: bring the story along from the last chapter
-    (this drawer, or the last chapter's disk), or play the standard story"""
+    """the start of a chapter (disk): read the story of the last chapter (this drawer,
+    or the last chapter's disk), then the item check list: every keepsake of every
+    disk before this one must be in the inventory. Dev mode skips all of this."""
     prev, this = CH_NAMES[CH - 1], CH_NAMES[CH]
-    ok, ask, back, done, again, volchk, go = (s.label() for _ in range(7))
+    ok, ask, back, again, volchk, go, stuck = (s.label() for _ in range(7))
     s.storyload(0, 'story_ok')
     s.iff('story_ok', ok)
     s.here(ask)
     s.cutoff()
-    s.card(f'Your story from {prev} is not in this drawer. Put the {prev} disk in the drive.', wait=False)
-    s.dialog([(f'The {prev} disk is in. Read my story.', again, None),
-              ('Play the standard story (start fresh).', done, None)])
+    s.card(f'Your story from {prev} is not on this disk. Put the {prev} disk in the drive.', wait=False)
+    s.dialog([(f'The {prev} disk is in. Read my story.', again, None)])
     s.here(again)
     s.storyload(1, 'story_ok')
     s.iff('story_ok', back)
-    s.card(f'There is no story on that disk. Did you finish {prev}?', wait=True)
+    s.card(f'There is no story on that disk. Play {prev} to the end: the end writes your story.', wait=True)
     s.jmp(ask)
     s.here(back)
     s.card(f'Your story is read! Now put the {this} disk back in.', wait=False)
@@ -157,14 +180,25 @@ def story_start(s):
     s.iff('story_vol', ok)
     s.card(f'That is not the {this} disk.', wait=True)
     s.jmp(back)
-    s.here(done)
-    s.storydef()
-    s.cuton()
-    s.card('The standard story: everything as most players would have it.', wait=True)
-    s.jmp(go)
     s.here(ok)
+    miss = []
+    for n in range(1, CH):
+        k = _story.KEEPSAKES[n]
+        L = s.label()
+        miss.append((L, n, k))
+        s.nothas(k, L)
     s.cuton()
-    s.card(f'Your story from {prev} continues...', wait=True)
+    s.card(f'Item check OK. Your story from {prev} continues...', wait=True)
+    s.jmp(go)
+    for L, n, k in miss:
+        s.here(L)
+        s.cutoff()
+        s.card(f'ITEM CHECK FAILED! The {KEEP_INFO[k][0]} from {CH_NAMES[n]} is not in your inventory. '
+               f'This story cannot go on.', wait=True)
+        s.jmp(stuck)
+    s.here(stuck)
+    s.wait(50)
+    s.jmp(stuck)
     s.here(go)
     return s
 
@@ -180,7 +214,7 @@ def story_end(s):
     s.iff('story_saved', ok)
     s.cutoff()
     s.card('I could not write your story to the disk. Is it write-protected?', wait=False)
-    s.dialog([('I fixed it. Try again.', ask, None), (f'Go on without it ({nxt} will play the standard story).', skip, None)])
+    s.dialog([('I fixed it. Try again.', ask, None), (f'Go on without it ({nxt} will not start without your story).', skip, None)])
     s.here(ok)
     s.cuton()
     s.card(f'Your story is saved. {nxt} will continue it.', wait=True)

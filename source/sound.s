@@ -24,7 +24,7 @@ TR_LOOP  = 14               ; .l loop start (chip), 18 .w loop length
 TR_SET   = 20               ; .b set the loop at the next frame
 TR_SIZE  = 22
 
-MUS_LOUD   = 26               ; music volume (of 64), normally and under speech
+MUS_LOUD   = 20               ; music volume (of 64), normally and under speech
 MUS_SPEECH = 7
 
 sound_init
