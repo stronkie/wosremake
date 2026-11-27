@@ -1,4 +1,13 @@
-# Pending itch release: World of Stronkie remake V0.1.0 (Chapter One + free demo)
+# itch: World of Stronkie remake (page 5459300, stronkie.itch.io/world-of-stronkie-remake)
+
+Done 2026-11-27 (Mark asked to publish now): the page is public with the FREE DEMO V0.1.0
+(ADF + WHDLoad, payment mode "No payments"), description, cover, 6 screenshots, the theme
+(dark night colours, Mark's Stronkie Soft banner, itch/background.png fixed and not repeated,
+pixel font for headers) and the devlog "World of Stronkie remake: the classic, now point &
+click - free demo out now!". itch had the new page marked inactive ("This game is currently
+unavailable") right after publishing: check the downloads show up.
+
+# Still pending: the paid Chapter One V0.1.0
 
 For the weekly "Stronkie Soft Update Sunday" run. A NEW itch page (the remake is its own
 game): the text adventure "The World of Stronkie" keeps its own page exactly as it is.
