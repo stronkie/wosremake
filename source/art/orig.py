@@ -285,3 +285,4 @@ ROOM_ART = {
     'stairs': stairs, 'bunker': bunker, 'lockers': lockers, 'hangar': hangar, 'control': control,
     'shipin': shipin, 'title': title,
 }
+import orig2  # noqa: E402,F401  (the rooms of the chapter disks 2-7)

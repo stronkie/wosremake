@@ -426,3 +426,4 @@ def fragment():
 ICONS.update({'shovel': shovel, 'crank': crank, 'brasskey': brasskey, 'paper': paper, 'candle': candle,
               'litcandle': lambda: candle(True), 'matches': matches, 'knife': knife, 'silverkey': silverkey,
               'amulet': amulet, 'suit': suit, 'fragment': fragment})
+import icons2  # noqa: E402,F401  (the icons of the chapter disks 2-7)

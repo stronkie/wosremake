@@ -1,0 +1,22 @@
+STORY = (['frag1', 'frag2', 'frag3', 'edmund_freed'], ['suit', 'fragments', 'knife', 'paper'])
+WALK = [
+    ('expect', 'paper'), ('expect', 'room:cockpit'),
+    ('talk', 'novascreen', ['NOVA, what do we do now?', 'Make it so!']),
+    ('push', 'throttle'), ('expect', 'room:cockpit'),
+    ('walk', 'c_out'), ('expect', 'room:shipcorr'),
+    ('walk', 'sc_galley'), ('push', 'dispenser'), ('pickup', 'ration_o'), ('expect', 'ration'),
+    ('look', 'table'), ('expect', 'flag:frag4'), ('walk', 'ga_out'),
+    ('walk', 'sc_cargo'), ('expect', 'room:shipcorr'),
+    ('walk', 'sc_engine'), ('pickup', 'crowbar_o'), ('expect', 'crowbar'), ('walk', 'en_out'),
+    ('walk', 'sc_airlock'), ('pickup', 'boots_o'), ('use', 'boots'), ('expect', 'flag:boots_on'), ('walk', 'al_out'),
+    ('walk', 'sc_cargo'), ('expect', 'room:cargo'), ('use', 'crowbar', 'crate'), ('pickup', 'crystal_o'),
+    ('expect', 'crystal'), ('walk', 'ca_out'), ('walk', 'sc_cockpit'),
+    ('use', 'crystal', 'navscreen'), ('expect', 'flag:nav_ok'), ('push', 'throttle'), ('expect', 'room:dock'),
+    ('talk', 'ship', ['NOVA, can you hear me?']),
+    ('walk', 'dk_out'), ('expect', 'room:stcorr'), ('walk', 'st_power'), ('expect', 'room:stcorr'),
+    ('walk', 'st_quarters'), ('look', 'bunks'), ('expect', 'flag:frag5'), ('look', 'terminal'), ('walk', 'qu_out'),
+    ('talk', 'robot', ['The code is 1985.']), ('expect', 'flag:robot_off'),
+    ('walk', 'st_power'), ('expect', 'room:power'), ('pull', 'switch'), ('expect', 'flag:power_on'), ('walk', 'pw_out'),
+    ('walk', 'st_map'), ('expect', 'room:maproom'), ('pickup', 'chart_o'), ('expect', 'chart'), ('walk', 'mp_out'),
+    ('walk', 'st_dock'), ('walk', 'ship'), ('expect', 'end'),
+]

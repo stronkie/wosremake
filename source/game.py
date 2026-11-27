@@ -14,6 +14,7 @@ VARIANTS = {}              # object picture -> (room art, base kwargs, variant k
 DEV_SPOTS = []
 DEV_ITEMS = []
 BLOCK = {}
+EXTRA_SPEECH = {}       # spoken text -> the original's speech sample (orig/sound/NAME.spk)
 
 
 class Game:

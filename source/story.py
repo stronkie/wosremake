@@ -5,10 +5,12 @@ story file has room for 128 of each, numbered in the order below.
 Never reorder these lists, only add to the end."""
 FLAGS = [f'frag{n}' for n in range(1, 17)] + [   # the 16 star fragments of the true ending
     'edmund_freed',      # Prologue: freed Uncle Edmund
-    'fed_monkey',        # Chapter 3/4: the monkey bonus
-    'helped_trader',     # choices that matter for the ending
-    'spared_guard',
-    'saved_nova',
+    'napkin_given',      # Chapter 3: gave the napkin to the janitor -> Chapter 12: Roger's keycard
+    'kicked_chicken',    # Chapter 3: kicked the Astro Chicken machine -> Chapter 11: the guards' badge
+    'untied_crewman',    # Chapter 4: untied Ricky -> Chapter 13: the plasma spanner
+    'said_grandmother',  # Chapter 4: won LeChuckle's rematch -> Chapter 13: the pirates refuse Vex
+    'monkey',            # Chapter 5: found the wooden monkey -> Chapter 11: the secret holodeck room
+    'glasses',           # Chapter 6: wore the glasses -> Chapter 11: the disguise
 ]
 ITEMS = ['amulet', 'suit', 'fragments', 'knife',
          'paper', 'ration', 'feather', 'shell', 'medal', 'compass']

@@ -37,7 +37,7 @@ FONT = os.path.join(HERE, 'font8x8_basic.h')    # font8x8 (public domain), as Wo
 VERSIONS = {1: 'V0.1.1', 2: 'V0.2.0', 3: 'V0.3.0', 4: 'V0.4.0', 5: 'V0.5.0', 6: 'V0.6.0', 7: 'V0.7.0'}
 VERSION = VERSIONS[CH]
 PREFIX = 'WOSR' if CH == 1 else f'WOSRC{CH}'        # the file names of this chapter's disk
-CHAPTER_NAMES = {1: 'Chapter One: The Prologue'}
+CHAPTER_NAMES = {1: 'Chapter One: The Prologue', 2: 'Chapter Two: Into Space', 3: 'Chapter Three: Asteroid 42', 4: 'Chapter Four: Landfall', 5: 'Chapter Five: The Crystal Mountains', 6: 'Chapter Six: The Star Heart', 7: 'Chapter Seven: Vex\'s Flagship'}
 DISK_NAME = f'WorldOfStronkieRemake_Chapter{CH}'
 
 
@@ -256,7 +256,9 @@ SPEECH_GAIN = 2.6       # the original speech samples are soft (RMS ~20 of 127):
 
 def speech_clip(text, voice, speed):
     """the original's speech sample for this line, made louder: .w samples, .w period, Fibonacci delta data"""
-    x, per = spk_decode(open(os.path.join(ORIG, 'sound', SPEECH[text] + '.spk'), 'rb').read())
+    import game
+    name = SPEECH.get(text) or game.EXTRA_SPEECH[text]
+    x, per = spk_decode(open(os.path.join(ORIG, 'sound', name + '.spk'), 'rb').read())
     y = np.tanh(x / 127 * SPEECH_GAIN) / np.tanh(SPEECH_GAIN) * 124
     y = np.round(y).astype(np.int16)
     if len(y) % 2:
