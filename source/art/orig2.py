@@ -281,5 +281,74 @@ def starbridge(bridge=False):
 
 ROOM_ART.update({'icecave': icecave, 'camp': camp, 'tent': tent, 'statues': statues, 'mirrors': mirrors,
                  'starbridge': starbridge})
+# ------------------------------------------------------------- disk 6: the Star Heart, Repairs
+def heart(machine=True):
+    cv = base('heart')
+    if machine:
+        m = cv.rect(214, 92, 244, 120)
+        cv.fill(m, cv.lgrad((214, 0), (244, 0), '#2a2a34', '#0c0c10'))
+        cv.bevel(m, 1.5, 0.6)
+        for k, c in enumerate(('#ff3030', '#30ff60', '#ffc020')):
+            cv.fill(cv.ellipse(220 + k * 9, 98, 1.6, 1.6), c)
+        cv.fill(cv.line([(244, 116), (300, 150), (319, 152)], 2.5), '#101014')
+        cv.fill(cv.line([(214, 110), (184, 90)], 2), '#101014')
+    return cv
+
+
+def westgal(horn=False):
+    cv = base('westgal')
+    if horn:
+        h = cv.poly([(220, 132), (246, 124), (252, 116), (256, 126), (248, 132), (222, 138)])
+        cv.fill(h, '#d8dce8')
+        cv.fill(cv.ellipse(252, 121, 4, 6), '#a0a8b8')
+        cv.fill(cv.line([(222, 136), (246, 128)], 0.8), '#ffffff')
+    return cv
+
+
+def eastgal(soldier_=False):
+    cv = base('eastgal')
+    if soldier_:
+        soldier(cv, 228, 128)
+        cv.fill(cv.ellipse(228, 97, 7, 5), '#1c1c22')         # a big helmet
+    return cv
+
+
+def catacomb(bars=False):
+    cv = base('catacomb')
+    if bars:
+        for x in range(252, 282, 6):
+            b = cv.rect(x, 46, x + 3, 136)
+            cv.fill(b, '#80d0f0')
+            cv.glow(b, '#a0e8ff', 3, 0.4)
+    return cv
+
+
+def workshop(hammer=False):
+    cv = base('workshop')
+    if hammer:
+        cv.fill(cv.line([(48, 118), (72, 112)], 2), '#8a5a2a')
+        cv.fill(cv.rect(70, 106, 80, 116), '#a0b0c0')
+    return cv
+
+
+def mineentry(kite=True, pip=True):
+    cv = base('mineentry')
+    if not kite:
+        copy(cv, 60, 8, 84, 40, 96, 8)
+    if not pip:
+        copy(cv, 156, 116, 184, 160, 126, 116)
+    return cv
+
+
+def maze3():
+    cv = base('maze')
+    hole = cv.ellipse(160, 150, 24, 7)
+    cv.fill(hole, '#020204')
+    cv.fill(cv.ellipse(160, 150, 27, 9) * (1 - hole), '#3a4a60')
+    return cv
+
+
+ROOM_ART.update({'heart': heart, 'westgal': westgal, 'eastgal': eastgal, 'catacomb': catacomb, 'workshop': workshop,
+                 'mineentry': mineentry, 'maze3': maze3})
 ROOM_ART.update({'cockpit': cockpit, 'galley': galley, 'engine': engine, 'cargo': cargo, 'airlock': airlock,
                  'stcorr': stcorr, 'maproom': maproom})

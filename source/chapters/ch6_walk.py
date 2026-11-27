@@ -1,0 +1,23 @@
+STORY = (['frag1', 'frag2', 'frag3', 'frag4', 'frag5', 'frag6', 'frag7', 'frag8', 'frag9', 'frag10', 'frag11',
+          'edmund_freed', 'napkin_given', 'kicked_chicken', 'untied_crewman', 'said_grandmother', 'monkey', 'glasses'],
+         ['amulet', 'fragments', 'paper', 'ration', 'chicken', 'shell', 'spikes'])
+WALK = [
+    ('expect', 'room:heart'), ('talk', 'vex_t', []), ('walk', 'starheart'), ('expect', 'room:heart'),
+    ('walk', 'hr_west'), ('look', 'murals'), ('expect', 'flag:frag12'), ('pickup', 'horn_o'), ('expect', 'horn'),
+    ('walk', 'wg_out'), ('use', 'horn', 'vex_t'), ('expect', 'flag:vex_fled', ) if False else ('walk', 'hr_east'),
+    ('pull', 'plug'), ('expect', 'room:eastgal'), ('use', 'horn', 'esoldier'), ('pull', 'plug'),
+    ('expect', 'flag:unplugged'), ('walk', 'eg_out'), ('use', 'horn', 'vex_t'), ('expect', 'flag:vex_fled'),
+    ('walk', 'trapdoor'), ('expect', 'room:catacomb'), ('walk', 'arch'), ('expect', 'room:deadend'),
+    ('talk', 'vex_d', []), ('walk', 'de_out'), ('pull', 'clever'), ('expect', 'flag:vex_trapped'),
+    ('walk', 'cc_up'), ('expect', 'room:heart'), ('talk', 'edmund_t', []), ('walk', 'starheart'),
+    ('expect', 'room:altar'), ('use', 'amulet', 'ravenlock'), ('expect', 'room:site'),
+    ('talk', 'bix_s', []), ('pickup', 'hammer_o'), ('expect', 'hammer'), ('walk', 'si_east'),
+    ('walk', 'tunnel'), ('expect', 'room:mineentry'), ('use', 'kitetree'), ('expect', 'kite'),
+    ('give', 'kite', 'pip_m'), ('expect', 'flag:pip_follows'), ('walk', 'tunnel'), ('expect', 'room:maze1'),
+    ('talk', 'pip_maze1', []), ('walk', 'maze1_N'), ('expect', 'room:maze2'), ('walk', 'maze2_E'),
+    ('expect', 'room:maze3'), ('walk', 'maze3_D'), ('expect', 'room:vein'), ('look', 'rubble'),
+    ('expect', 'flag:frag13'), ('use', 'hammer', 'vein_v'), ('expect', 'starcrystal'), ('walk', 'vn_up'),
+    ('walk', 'maze3_N'), ('walk', 'maze2_N'), ('walk', 'maze1_W'), ('expect', 'room:mineentry'),
+    ('walk', 'me_west'), ('give', 'starcrystal', 'bix_s'), ('expect', 'flag:engine_ok'), ('walk', 'newengine'),
+    ('expect', 'end'),
+]

@@ -7,7 +7,7 @@ ACTORS = [   # name, costume, talk colour (fixed palette), voice
     ('narrator', None, 30, ('rms', 0.95)),
     ('nova', None, 24, ('slt', 1.0)),          # NOVA has no body: a calm voice everywhere on the ship
 ]
-EXTRA_COSTUMES = ['suit']
+EXTRA_COSTUMES = []
 SOUNDS = ['pickup', 'door', 'thunder', 'zap', 'launch', 'score', 'drop', 'error', 'beep', 'hyper', 'click']
 SPECIALS = {'pilot': ['reach', 'reachl'], 'suit': ['reach', 'reachl']}
 

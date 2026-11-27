@@ -141,7 +141,7 @@ KEEP_INFO = {   # keepsake: (label, icon, look text)
                                          'I will never give it away.'),
     'spikes': ('spiked boots', 'spikes', 'Boots with iron spikes under the soles. They carried me over the ice bridge. '
                                         'I am keeping them.'),
-    'compass': ('star compass', 'compass', 'A little compass. Its needle always points to Stronkie.'),
+    'horn': ('silver horn', 'horn', 'A curled silver horn. It chased away Vex. I am keeping it, just in case.'),
 }
 
 

@@ -228,6 +228,32 @@ def stardust():
     return P.finish()
 
 
+def horn():
+    P = IPen()
+    P.poly([(3, 16), (20, 10), (26, 3), (29, 12), (24, 18), (5, 20)], SENT)
+    P.ellipse(27, 8, 3, 5, GREY)
+    P.limb(5, 18, 21, 12, 0.6, WHITE)
+    return P.finish()
+
+
+def hammer():
+    P = IPen()
+    P.limb(6, 21, 20, 8, 1.4, LBROWN)
+    P.poly([(14, 3), (24, 1), (28, 9), (20, 12)], GREY)
+    P.poly([(14, 3), (24, 1), (25, 4), (16, 6)], WHITE)
+    return P.finish()
+
+
+def kite():
+    P = IPen()
+    P.poly([(16, 1), (25, 9), (16, 18), (7, 9)], BLUE)
+    P.poly([(16, 1), (25, 9), (16, 9)], CYAN)
+    P.limb(16, 18, 12, 23, 0.6, WHITE)
+    P.dot(13, 20, RED)
+    return P.finish()
+
+
+ICONS.update({'horn': horn, 'hammer': hammer, 'kite': kite, 'starcrystal': lambda: crystal(CYAN, WHITE)})
 ICONS.update({'snowball': snowball, 'spikes': spikes, 'stardust': stardust})
 ICONS.update({'extinguisher': extinguisher, 'fruit': fruit, 'monkey': monkey, 'map': scroll_map, 'banner': banner,
               'glider': glider, 'glasses': glasses, 'powercrystal': lambda: crystal(PINK, WHITE)})

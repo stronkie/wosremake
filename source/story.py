@@ -13,9 +13,9 @@ FLAGS = [f'frag{n}' for n in range(1, 17)] + [   # the 16 star fragments of the 
     'glasses',           # Chapter 6: wore the glasses -> Chapter 11: the disguise
 ]
 ITEMS = ['amulet', 'suit', 'fragments', 'knife',
-         'paper', 'ration', 'chicken', 'shell', 'spikes', 'compass']
+         'paper', 'ration', 'chicken', 'shell', 'spikes', 'horn']
 
 # the item check list: every disk gives the player one keepsake that can never be
 # lost; every later disk checks the keepsakes of ALL the disks before it.
-KEEPSAKES = {1: 'paper', 2: 'ration', 3: 'chicken', 4: 'shell', 5: 'spikes', 6: 'compass'}
+KEEPSAKES = {1: 'paper', 2: 'ration', 3: 'chicken', 4: 'shell', 5: 'spikes', 6: 'horn'}
 KEEP_FROM = {v: k for k, v in KEEPSAKES.items()}
