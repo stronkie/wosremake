@@ -775,6 +775,10 @@ def build_adf():
     open(os.path.join(OUT, f'{PREFIX}.info'), 'wb').write(tool_icon())
     for f in (PREFIX, PREFIX + '.DAT', PREFIX + '.GFX', PREFIX + '.STR', PREFIX + '.info'):
         shutil.copy(os.path.join(OUT, f), os.path.join(src, f))
+    if os.environ.get('WOS2_TESTSTORY'):          # a test disk: with the story of the last chapter on it
+        disk = disk.replace('.adf', '_TEST.adf')
+        subprocess.run([sys.executable, os.path.join(HERE, 'tools', 'storyfile.py'), os.path.join(src, f'WOSR.ST{CH}'),
+                        os.environ['WOS2_TESTSTORY']], check=True)
     ADF.build(disk, volume_name(CH, DEMO), src, os.path.join(TOOLKIT, 'tools', 'bootblock.bin'))
     used = sum(os.path.getsize(os.path.join(src, f)) for f in os.listdir(src) if os.path.isfile(os.path.join(src, f)))
     print(os.path.basename(disk), f'{used} bytes of files')

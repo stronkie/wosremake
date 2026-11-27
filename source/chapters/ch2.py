@@ -163,10 +163,10 @@ first_visit('shipcorr', 'You are in the ship\'s main corridor. The cockpit is no
 # ---- the galley
 hot('porthole', 'galley', (140, 30, 180, 72), (160, 118), BACK, label='porthole',
     look='Outside, a purple moon drifts slowly past.')
-hot('ration_o', 'galley', (204, 70, 228, 84), (216, 118), BACK, 'pickup', label='space ration', image='ration', state=0,
-    look='A grey bar wrapped in foil. It smells like nothing at all.')
 hot('dispenser', 'galley', (196, 30, 236, 96), (216, 118), BACK, 'push', label='food dispenser',
     look='A food dispenser with one button. The label says: PRESS FOR FOOD.')
+hot('ration_o', 'galley', (204, 70, 228, 84), (216, 118), BACK, 'pickup', label='space ration', image='ration', state=0,
+    look='A grey bar wrapped in foil. It smells like nothing at all.')
 s = G.script()
 L = s.label()
 s.iff('rationed', L)

@@ -1,0 +1,20 @@
+STORY = (['frag1', 'frag2', 'frag3', 'frag4', 'frag5', 'frag6', 'frag7', 'edmund_freed', 'napkin_given',
+          'kicked_chicken', 'untied_crewman', 'said_grandmother'], ['fragments', 'paper', 'ration', 'chicken'])
+WALK = [
+    ('expect', 'room:wreck'), ('talk', 'wsparks', []), ('pickup', 'ext_o'), ('expect', 'extinguisher'),
+    ('walk', 'wreck_out'), ('expect', 'room:wreck'), ('pull', 'wlever'), ('walk', 'wreck_out'), ('expect', 'room:crash'),
+    ('use', 'extinguisher', 'fire'), ('expect', 'flag:fire_out'), ('walk', 'jpath'), ('expect', 'room:jungle'),
+    ('pickup', 'fruit_o'), ('expect', 'fruit'), ('look', 'bushes'), ('pickup', 'monkey_o'), ('expect', 'monkey'),
+    ('walk', 'ju_east'), ('use', 'vine'), ('expect', 'room:ccave'), ('look', 'rock'), ('expect', 'flag:frag8'),
+    ('use', 'extinguisher', 'bigcrystal'), ('expect', 'pcrystal'), ('use', 'vine_back'), ('walk', 'rv_west'),
+    ('walk', 'ju_south'), ('walk', 'cr_east'), ('give', 'fruit', 'gguard'), ('walk', 'vgate_g'), ('expect', 'room:vgate'),
+    ('walk', 'vg_west'), ('walk', 'wreckship'), ('use', 'pcrystal', 'wslot'), ('expect', 'flag:ship_ok'),
+    ('walk', 'wreck_out'), ('walk', 'cr_east'), ('walk', 'vgate_g'), ('expect', 'room:vsquare'),
+    ('pickup', 'fountain'), ('expect', 'starcoin'), ('walk', 'sq_market'), ('pickup', 'glasses_o'), ('use', 'glasses'),
+    ('expect', 'flag:glasses'), ('give', 'starcoin', 'trader'), ('expect', 'shell'), ('use', 'shell'),
+    ('expect', 'flag:understand'), ('walk', 'mk_out'),
+    ('walk', 'sq_elder'), ('talk', 'zooma', []), ('expect', 'vmap'), ('walk', 'el_out'),
+    ('walk', 'sq_tower'), ('pickup', 'banner_o'), ('expect', 'banner'), ('look', 'nest'), ('expect', 'flag:frag9'),
+    ('walk', 'tw_down'), ('walk', 'sq_work'), ('talk', 'bixs', []), ('give', 'banner', 'bixs'), ('expect', 'glider'),
+    ('walk', 'ws_out'), ('walk', 'sq_tower'), ('use', 'glider', 'edge'), ('expect', 'end'),
+]

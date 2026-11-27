@@ -133,6 +133,75 @@ def chicken():
     return P.finish()
 
 
+def extinguisher():
+    P = IPen()
+    P.rect(11, 6, 19, 22, RED)
+    P.rect(12, 7, 13, 21, PINK)
+    P.rect(13, 2, 17, 6, DARK)
+    P.limb(17, 3, 25, 6, 1.0, DARK)
+    P.rect(11, 12, 19, 15, WHITE)
+    return P.finish()
+
+
+def fruit():
+    P = IPen()
+    P.ellipse(16, 14, 8, 8, BLUE)
+    P.ellipse(13, 11, 3, 3, CYAN)
+    P.limb(16, 6, 18, 2, 0.8, BROWN)
+    P.ellipse(21, 4, 3, 1.5, GREEN)
+    return P.finish()
+
+
+def monkey():
+    P = IPen()
+    P.ellipse(16, 17, 6, 6, BROWN)
+    P.ellipse(16, 8, 6, 5, LBROWN)
+    P.ellipse(16, 9, 3.5, 2.5, SENT)
+    P.ellipse(9, 7, 2.5, 2.5, LBROWN)
+    P.ellipse(23, 7, 2.5, 2.5, LBROWN)
+    P.dot(14, 7, DARK)
+    P.dot(18, 7, DARK)
+    P.limb(21, 20, 27, 14, 1.0, BROWN)
+    return P.finish()
+
+
+def scroll_map():
+    P = IPen()
+    P.poly([(4, 5), (28, 4), (28, 20), (4, 21)], SENT)
+    P.poly([(8, 18), (14, 9), (19, 16), (23, 8), (27, 18)], GREY)
+    P.poly([(14, 9), (16, 12), (12, 12)], WHITE)
+    P.limb(6, 19, 26, 12, 0.6, RED)
+    return P.finish()
+
+
+def banner():
+    P = IPen()
+    P.poly([(4, 4), (28, 6), (26, 14), (28, 20), (4, 19)], PINK)
+    P.poly([(4, 4), (28, 6), (27, 9), (4, 8)], RED)
+    return P.finish()
+
+
+def glider():
+    P = IPen()
+    P.poly([(2, 12), (16, 6), (30, 12), (16, 10)], PINK)
+    P.limb(16, 8, 16, 20, 1.0, LBROWN)
+    P.limb(8, 18, 24, 18, 1.0, LBROWN)
+    return P.finish()
+
+
+def glasses():
+    P = IPen()
+    P.ellipse(10, 9, 5, 4, DARK)
+    P.ellipse(22, 9, 5, 4, DARK)
+    P.ellipse(10, 9, 3.5, 2.5, CYAN)
+    P.ellipse(22, 9, 3.5, 2.5, CYAN)
+    P.poly([(14, 10), (18, 10), (19, 17), (13, 17)], PINK)
+    P.rect(9, 18, 23, 20, BROWN)
+    return P.finish()
+
+
+ICONS.update({'extinguisher': extinguisher, 'fruit': fruit, 'monkey': monkey, 'map': scroll_map, 'banner': banner,
+              'glider': glider, 'glasses': glasses, 'powercrystal': lambda: crystal(PINK, WHITE)})
 ICONS.update({'burger': burger, 'coin': coin, 'cash': lambda: coin(3), 'napkin': napkin, 'fuelcell': fuelcell,
               'chicken': chicken, 'ration': ration, 'crowbar': crowbar, 'crystal': crystal, 'boots': boots, 'disc': disc,
               'feather': feather, 'shell': shell, 'medal': medal, 'compass': compass})

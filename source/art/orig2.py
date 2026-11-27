@@ -156,5 +156,62 @@ def pengine(ricky_gone=False):
 
 
 ROOM_ART.update({'bar': bar, 'stan': stan, 'deck': deck, 'pengine': pengine})
+# ------------------------------------------------------------- disk 4: Landfall, the Village
+def wreck(extinguisher=False):
+    cv = base('wreck')
+    if extinguisher:
+        b = cv.rect(26, 120, 38, 152)
+        cv.fill(b, cv.lgrad((26, 0), (38, 0), '#ff4030', '#901810'))
+        cv.fill(cv.rect(29, 114, 35, 120), '#202020')
+        cv.fill(cv.line([(35, 116), (42, 124)], 1.5), '#202020')
+        cv.fill(cv.rect(27, 132, 37, 138), '#f0f0f0')
+    return cv
+
+
+def crash(fire_out=False):
+    cv = base('crash')
+    if fire_out:
+        copy(cv, 0, 80, 56, 148, 218, 80)
+        copy(cv, 290, 80, 319, 148, 262, 80)
+        for x, y in ((236, 132), (252, 126), (264, 136)):          # the white foam
+            cv.fill(cv.ellipse(x, y, 10, 5), '#f4f4ff')
+    return cv
+
+
+def jungle(fruit=True, monkey=False):
+    cv = base('jungle')
+    if not fruit:
+        for dx in (158, 170, 182):
+            copy(cv, 138, 61, 150, 80, dx, 61)
+    if monkey:
+        m = cv.ellipse(96, 132, 5, 6)
+        cv.fill(m, '#8a5a2a')
+        cv.fill(cv.ellipse(96, 124, 4, 4), '#9a6a3a')
+        cv.fill(cv.ellipse(96, 125, 2.5, 2), '#d8b080')
+        cv.fill(cv.ellipse(91, 123, 1.5, 1.5), '#9a6a3a')
+        cv.fill(cv.ellipse(101, 123, 1.5, 1.5), '#9a6a3a')
+    return cv
+
+
+def market(glasses=False):
+    cv = base('market')
+    if glasses:
+        for x in (252, 262):
+            cv.fill(cv.ellipse(x, 72, 4, 3), '#202020')
+            cv.fill(cv.ellipse(x, 72, 2.5, 1.8), '#a0c0e0')
+        cv.fill(cv.poly([(255, 73), (259, 73), (258, 80), (256, 80)]), '#f0b090')
+        cv.fill(cv.rect(252, 80, 262, 82), '#302010')
+    return cv
+
+
+def tower(banner=True):
+    cv = base('tower')
+    if not banner:
+        copy(cv, 4, 4, 48, 46, 57, 4)
+        copy(cv, 4, 4, 30, 46, 96, 4)
+    return cv
+
+
+ROOM_ART.update({'wreck': wreck, 'crash': crash, 'jungle': jungle, 'market': market, 'tower': tower})
 ROOM_ART.update({'cockpit': cockpit, 'galley': galley, 'engine': engine, 'cargo': cargo, 'airlock': airlock,
                  'stcorr': stcorr, 'maproom': maproom})
