@@ -109,25 +109,22 @@ def main():
             tgt = [tg(st[1])]
         else:
             tgt = [tg(st[1]), tg(st[2])]
-        top0 = S.inv_top
-        S.step(st)
-        changed = S.inv_top != top0 or S.inv != inv_before
         out.extend(['k 56', 'w 1'] * 4 + ['w 1'])
         if c == 'walk':
             click(*tgt[0]())
             out.append('w 6')
         else:
             click(*VERB[c])
-            for t in tgt:
-                click(*t())
+            for t_ in tgt:
+                click(*t_())
             if c in ('use', 'give') and len(st) < 3 and st[1] in inv_before:
                 click(*tgt[0]())                  # the same item again: use it on its own
             out.append('w 7')
-        if not changed:
-            S.inv_top = top[0]
+        S.inv_top = top[0]                        # the scrolling done above, then the step
+        S.step(st)
         for kind, v in S.events[ev0:]:
             if kind == 'say':
-                out.extend(['w 2', 'k 56'])
+                out.extend(['w 3', 'k 56'])
             elif kind == 'card':
                 out.extend(['w 4', 'k 56'])
             elif kind == 'pause':

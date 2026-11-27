@@ -157,6 +157,10 @@ def chapter_start(intro_cards, part_card, room, x, y, d=BACK, music=None):
         st.card(c, wait=True)
     if music:
         st.music(music)
+    if os.environ.get('WOS2_TESTROOM'):         # a test disk: start in another room
+        room, x, y, d = os.environ['WOS2_TESTROOM'].split(',')[0], 160, 160, BACK
+        for f in os.environ['WOS2_TESTROOM'].split(',')[1:]:
+            st.pickup(f[1:]) if f.startswith('+') else st.setf(f)
     st.room(room, x, y, d)
     st.cutoff()
     return st
