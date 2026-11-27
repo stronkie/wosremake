@@ -1,68 +1,679 @@
-=====================================================================
-          WORLD OF STRONKIE REMAKE - CHAPTER ONE: THE PROLOGUE
-                        Complete walkthrough
-                Created By Mark Stronks, Stronkie Soft
-=====================================================================
+WORLD OF STRONKIE REMAKE - THE COMPLETE WALKTHROUGH
+Created By Mark Stronks, Stronkie Soft. For all seven disks, V1.0.
 
-You can never die and never get stuck. The three star fragments (*)
-are hidden in the same places as in the original text adventure.
-"Use X with Y": click Use, then X in your inventory, then Y.
+How to read it: every line is one click (or a few). "Use the X with the Y": click Use,
+then the X in your inventory, then the Y. "Talk to ...: say ...": pick those lines in
+the conversation. Walk lines take you to the next room.
 
----------------------------------------------------------------------
-PROLOGUE, PART 1: THE GROUNDS   (also the free demo)
----------------------------------------------------------------------
-- Walk through the iron gates into the garden.
-- Walk to the garden shed (east).
-- Pick up the rusty tools.                     * Star fragment 1
-- Pick up the shovel.
-- Leave the shed. Use the shovel with the mound of earth:
-  you dig up an iron handle. Pick up the iron handle.
-- Walk to the old well (west). Use the iron handle with the winch:
-  the bucket comes up. Pick up the brass key from the bucket.
-- Back to the garden, then to the porch of the manor (north).
-- Pick up the doormat: a scrap of paper (a hint from Uncle Edmund).
-- Open the front door (or use the brass key with it), and walk in.
-  The door slams shut behind you...
+You can never die and never get stuck. This walkthrough takes every good choice and
+finds all 16 star fragments, so you get the TRUE ENDING.
 
----------------------------------------------------------------------
-PROLOGUE, PART 2: THE MANOR
----------------------------------------------------------------------
-- Walk through the door to the east: the kitchen.
-- Pick up the wax candle, the box of matches and the kitchen knife.
-- Use the matches with the candle: a burning candle.
-- Walk down the steps to the cellar.
-- Pick up the old barrels.                     * Star fragment 2
-- Pick up the silver key. Go back up, and back to the hall.
-- Use the silver key with the small door, and walk through it:
-  Uncle Edmund's study.
-- Look at the diary: "...pull the red book."
-- Back to the hall, then through the door to the west: the library.
-- Pull the red book: a secret passage opens. Walk through it.
-- Use the kitchen knife with the ropes: Uncle Edmund is free!
+THE KEEPSAKES (the item check list): every disk gives you one thing you must keep:
+  Disk 1 scrap of paper, 2 space ration, 3 rubber chicken, 4 singing shell,
+  5 spiked boots, 6 silver horn. Every later disk checks they are in your inventory.
 
----------------------------------------------------------------------
-PROLOGUE, PART 3: THE LAUNCH PAD
----------------------------------------------------------------------
-- Uncle Edmund gives you the amulet.
-- Pick up the worn steps (search them).        * Star fragment 3
-- Walk down the stairs: the steel corridor.
-- Walk to the locker room (west). Open the locker marked PILOT:
-  a spacesuit and a keycard. Use the spacesuit: you put it on.
-- Back to the corridor. Use the keycard with the card slot:
-  the blast door opens. Walk through it: the hangar.
-- Walk to the control room. (Talk to Uncle Edmund if you like.)
-- Use the amulet with the round slot: the roof slides open.
-- Pull the big red lever: the STARRAVEN's hatch opens.
-- Back to the hangar. Walk to the STARRAVEN (up the ramp).
-- Push the LAUNCH button. LIFT-OFF!
+CHOICES THAT MATTER (all optional, they pay off on disk 7):
+  Disk 3: give the napkin to Roger (after the burger) -> he gets you the keycard.
+  Disk 3: kick (Push) the Astro Chicken machine     -> the guards are your fans.
+  Disk 3: untie Ricky                                -> he brings the plasma spanner.
+  Disk 3: answer LeChuckle's rematch                 -> the pirates stay out of it.
+  Disk 4: find the wooden monkey in the bushes       -> the secret holodeck.
+  Disk 4: put on the nose glasses                    -> a disguise at the checkpoint.
 
-To be continued in Chapter Two: Into Space.
 
----------------------------------------------------------------------
-THINGS TO TRY
----------------------------------------------------------------------
-- Look at the well, then try to climb down the rope.
-- Use the microwave in the kitchen. Look at the jar in the study.
-- Try to pick up the amulet before you free Uncle Edmund.
-- Push the LAUNCH button without the flight suit.
-- Wait a while on the grounds: lightning, and a face at a window.
+======================================================================
+DISK 1 - CHAPTER ONE: THE PROLOGUE: RAVENMOOR
+======================================================================
+At the start: the title, then the letter from Uncle Edmund.
+
+
+  [The Road]
+  - Go to the iron gates.
+
+  [The Garden]
+  - Go to the garden shed.
+
+  [The Shed]
+  - Pick up the rusty tools. (star fragment 1!)
+  - Pick up the shovel. You get: shovel.
+  - Take the way out.
+
+  [The Garden]
+  - Use the shovel with the mound of earth.
+  - Pick up the iron handle. You get: iron handle.
+  - Go to the old well.
+
+  [The Well]
+  - Use the iron handle with the winch.
+  - Pick up the brass key. You get: brass key.
+  - Go back to the garden.
+
+  [The Garden]
+  - Go to the porch of the manor.
+
+  [The Porch]
+  - Pick up the doormat. You get: scrap of paper.
+  - Open the front door.
+  - Go to the front door.
+
+  [The Hall]
+  - Go to the door to the east.
+
+  [The Kitchen]
+  - Pick up the wax candle. You get: wax candle.
+  - Pick up the box of matches. You get: box of matches.
+  - Pick up the kitchen knife. You get: kitchen knife.
+  - Use the box of matches with the wax candle. You get: burning candle.
+  - Take the steps down to the cellar.
+
+  [The Wine Cellar]
+  - Pick up the old barrels. (star fragment 2!)
+  - Pick up the silver key. You get: silver key.
+  - Take the steps up.
+
+  [The Kitchen]
+  - Go to the door to the hall.
+
+  [The Hall]
+  - Use the silver key with the small door.
+  - Go to the small door.
+
+  [The Study]
+  - Look at the diary.
+  - Go to the door to the hall.
+
+  [The Hall]
+  - Go to the door to the west.
+
+  [The Library]
+  - Pull the red book.
+  - Go to the secret passage.
+
+  [The Hidden Chamber]
+  - Use the kitchen knife with the ropes. You get: amulet.
+
+  [The Stairway]
+  - Pick up the worn steps. (star fragment 3!)
+  - Take the stairs down.
+
+  [The Bunker]
+  - Go to the locker room.
+
+  [The Locker Room]
+  - Open the locker marked PILOT. You get: spacesuit, keycard.
+  - Use the spacesuit.
+  - Go to the corridor.
+
+  [The Bunker]
+  - Use the keycard with the card slot.
+  - Go to the blast door.
+
+  [The Hangar]
+  - Go to the control room.
+
+  [The Control Room]
+  - Talk to Uncle Edmund: say "What do I do".
+  - Use the amulet with the round slot.
+  - Pull the big red lever.
+  - Go to the hangar.
+
+  [The Hangar]
+  - Go to STARRAVEN.
+
+  [The STARRAVEN]
+  - Push LAUNCH button.
+
+======================================================================
+DISK 2 - CHAPTER TWO: INTO SPACE
+======================================================================
+Put in disk 2: it reads your story from disk 1 (keep disk 1 at hand when playing from floppies).
+
+
+  [The Cockpit]
+  - Talk to NOVA: say "NOVA, what do we do now?", then "Make it so!".
+  - Push the hyperdrive throttle.
+  - Go back to the corridor.
+
+  [Ship Corridor]
+  - Go to the galley.
+
+  [The Galley]
+  - Push the food dispenser.
+  - Pick up the space ration. You get: space ration.
+  - Look at the table. (star fragment 4!)
+  - Go to the corridor.
+
+  [Ship Corridor]
+  - Go to the cargo hold.
+  - Go to the engine room.
+
+  [Engine Room]
+  - Pick up the crowbar. You get: crowbar.
+  - Go to the corridor.
+
+  [Ship Corridor]
+  - Take the ladder down to the airlock.
+
+  [The Airlock]
+  - Pick up the magnetic boots. You get: magnetic boots.
+  - Use the magnetic boots.
+  - Take the ladder up to the corridor.
+
+  [Ship Corridor]
+  - Go to the cargo hold.
+
+  [Cargo Hold]
+  - Use the crowbar with the big crate.
+  - Pick up the navigation crystal. You get: navigation crystal.
+  - Go to the corridor.
+
+  [Ship Corridor]
+  - Go to the door to the cockpit.
+
+  [The Cockpit]
+  - Use the navigation crystal with the navigation screen.
+  - Push the hyperdrive throttle.
+
+  [Docking Bay KX-9]
+  - Talk to STARRAVEN: say "NOVA, can you hear me?".
+  - Go to the dark corridor.
+
+  [Station Corridor]
+  - Go to the door to the power room.
+  - Go to the crew quarters.
+
+  [Crew Quarters]
+  - Look at the bunks. (star fragment 5!)
+  - Look at the terminal.
+  - Go back to the corridor.
+
+  [Station Corridor]
+  - Talk to the security robot: say "The code is 1985.".
+  - Go to the door to the power room.
+
+  [Power Room]
+  - Pull the big switch.
+  - Go back to the corridor.
+
+  [Station Corridor]
+  - Go to the map room door.
+
+  [The Map Room]
+  - Pick up the star chart disc. You get: star chart disc.
+  - Go back to the corridor.
+
+  [Station Corridor]
+  - Go back to the docking bay.
+
+  [Docking Bay KX-9]
+  - Go to STARRAVEN.
+
+======================================================================
+DISK 3 - CHAPTER THREE: ASTEROID 42
+======================================================================
+Disk 3. The insults: the pirates in the bar teach you the first comeback, the parrot the second, Ricky the one for LeChuckle.
+
+
+  [Landing Pad 42]
+  - Talk to the janitor.
+  - Go to STARRAVEN.
+  - Go to the space port.
+
+  [The Plaza]
+  - Pick up Monolith Burger stand. You get: free sample burger.
+  - Go to SCUMM BAR.
+
+  [The SCUMM BAR]
+  - Talk to the pirates.
+  - Look at the jukebox. (star fragment 6!)
+  - Pick up the greasy napkin. You get: greasy napkin.
+  - Look at the greasy napkin.
+  - Push Astro Chicken arcade game.
+  - Go to the door to the plaza.
+
+  [The Plaza]
+  - Go back to the landing pad.
+
+  [Landing Pad 42]
+  - Give the free sample burger to the janitor. You get: buckazoid coin.
+  - Give the greasy napkin to the janitor.
+  - Go to the space port.
+
+  [The Plaza]
+  - Go to the dark alley.
+
+  [The Alley]
+  - Talk to the man in a leisure suit: say "Ken sent me.".
+  - Go to the door marked LEFTY'S.
+
+  [Lefty's Back Room]
+  - Use the buckazoid coin with SLOTS-O-DEATH.
+  - Push SLOTS-O-DEATH. You get: fifty buckazoids.
+  - Go back to the alley.
+
+  [The Alley]
+  - Go back to the plaza.
+
+  [The Plaza]
+  - Go to Stan's Pre-Owned Starships.
+
+  [Stan's Starships]
+  - Give the fifty buckazoids to Stan. You get: fuel cell, rubber chicken.
+  - Go to the door to the plaza.
+
+  [The Plaza]
+  - Go back to the landing pad.
+
+  [Landing Pad 42]
+  - Use the fuel cell with STARRAVEN.
+  - Go to STARRAVEN.
+
+  [Cockpit (tractor beam)]
+  - Push the throttle.
+  - Take the ladder down to the airlock.
+
+  [The Airlock]
+  - Open the outer door.
+  - Use the rubber chicken with the outer door.
+
+  [Deck of the SPACE MONKEY]
+  - Talk to the parrot.
+  - Go to the door to the captain's cabin.
+  - Talk to the pirate guard: say "How appropriate. You fight like a cow!", then "I'm glad to hear you attended your family reunion.".
+  - Take the hatch to the engine room.
+
+  [Pirate Engine Room]
+  - Look at the crates of grog. (star fragment 7!)
+  - Talk to the crewman in a red shirt: say "I'll untie you.".
+  - Take the ladder up to the deck.
+
+  [Deck of the SPACE MONKEY]
+  - Go to the door to the captain's cabin.
+
+  [LeChuckle's Cabin]
+  - Talk to Captain LeChuckle: say "Look behind you, a three-headed monkey!". You get: big brass key.
+  - Go to the door to the deck.
+
+  [Deck of the SPACE MONKEY]
+  - Take the hatch to the engine room.
+
+  [Pirate Engine Room]
+  - Use the big brass key with the tractor beam generator.
+  - Take the ladder up to the deck.
+
+  [Deck of the SPACE MONKEY]
+  - Go to the door to the captain's cabin.
+
+  [LeChuckle's Cabin]
+  - Talk to Captain LeChuckle: say "Then she should be captain instead of you!".
+  - Go to the door to the deck.
+
+  [Deck of the SPACE MONKEY]
+  - Go to the cable.
+
+  [The Airlock]
+  - Take the ladder up to the cockpit.
+
+  [Cockpit (tractor beam)]
+  - Push the throttle.
+
+======================================================================
+DISK 4 - CHAPTER FOUR: LANDFALL
+======================================================================
+Disk 4. Until you listen to the singing shell, the Stronkies only chirp.
+
+
+  [The Wreck]
+  - Talk to the console.
+  - Pick up the fire extinguisher. You get: fire extinguisher.
+  - Take the hatch.
+  - Pull the red lever.
+  - Take the hatch.
+
+  [The Crash Site]
+  - Use the fire extinguisher with the flames.
+  - Take the path north.
+
+  [The Jungle]
+  - Pick up the blue fruit. You get: blue fruit.
+  - Look at the bushes.
+  - Pick up the wooden monkey. You get: wooden monkey.
+  - Take the path east to the river.
+
+  [The River]
+  - Use the tree with a vine.
+
+  [The Crystal Cave]
+  - Look at the rock. (star fragment 8!)
+  - Use the fire extinguisher with the big power crystal. You get: power crystal.
+  - Use the vine.
+
+  [The River]
+  - Take the path back to the jungle.
+
+  [The Jungle]
+  - Take the path south to the crash site.
+
+  [The Crash Site]
+  - Take the path east.
+
+  [The Village Gate]
+  - Give the blue fruit to the small blue creature.
+  - Go to the gate.
+  - Take the path west to the crash site.
+
+  [The Crash Site]
+  - Go to STARRAVEN.
+
+  [The Wreck]
+  - Use the power crystal with the power crystal slot.
+  - Take the hatch.
+
+  [The Crash Site]
+  - Take the path east.
+
+  [The Village Gate]
+  - Go to the gate.
+
+  [Village Square]
+  - Pick up the fountain. You get: shiny coin.
+  - Go to the market.
+
+  [The Market]
+  - Pick up the nose glasses. You get: nose glasses.
+  - Use the nose glasses.
+  - Give the shiny coin to the old trader. You get: singing shell.
+  - Use the singing shell.
+  - Go back to the square.
+
+  [Village Square]
+  - Go to Elder's hut.
+
+  [The Elder's Hut]
+  - Talk to Elder. You get: map of the mountains.
+  - Take the way out to the square.
+
+  [Village Square]
+  - Go to the lookout tower.
+
+  [The Lookout Tower]
+  - Pick up the big banner. You get: big banner.
+  - Look at the top of the pole. (star fragment 9!)
+  - Take the ladder down to the square.
+
+  [Village Square]
+  - Go to the workshop.
+
+  [Bix's Workshop]
+  - Talk to the young Stronkie with goggles.
+  - Give the big banner to the young Stronkie with goggles. You get: glider.
+  - Go back to the square.
+
+  [Village Square]
+  - Go to the lookout tower.
+
+  [The Lookout Tower]
+  - Use the glider with the edge of the tower.
+
+======================================================================
+DISK 5 - CHAPTER FIVE: THE CRYSTAL MOUNTAINS
+======================================================================
+Disk 5. Wear the spiked boots before you try the ice bridge.
+
+
+  [The Snowy Ledge]
+  - Pick up the snow. You get: snowball.
+  - Go to the dark cave.
+
+  [The Ice Cave]
+  - Look at the pile of junk. (star fragment 10!)
+  - Pick up the spiked boots. You get: spiked boots.
+  - Take the way out to the ledge.
+
+  [The Snowy Ledge]
+  - Take the path east.
+
+  [The Ice Bridge]
+  - Go to the ice bridge.
+  - Use the spiked boots.
+  - Go to the ice bridge.
+
+  [Vex's Camp]
+  - Go to Vex's tent.
+  - Use the snowball with the soldiers.
+  - Go to Vex's tent.
+
+  [Vex's Tent]
+  - Pick up the amulet. You get: amulet.
+  - Take the way out of the tent.
+
+  [Vex's Camp]
+  - Take the path north to the temple steps.
+
+  [The Temple Steps]
+  - Go to the crystal stairs.
+
+  [The Temple Gate]
+  - Use the amulet with the crystal gate.
+  - Go to the crystal gate.
+
+  [Hall of Statues]
+  - Look at the statues. (star fragment 11!)
+  - Pick up the silver mirror. You get: silver mirror.
+  - Pick up the star dust. You get: handful of star dust.
+  - Take the passage.
+
+  [The Round Room]
+  - Use the silver mirror with the stand in the sunbeam.
+  - Go to the door with a crystal eye.
+
+  [The Starbridge]
+  - Use the handful of star dust with the void.
+  - Go to the void.
+
+  [The Golden Door]
+  - Use the amulet with the golden door.
+
+======================================================================
+DISK 6 - CHAPTER SIX: THE STAR HEART
+======================================================================
+Disk 6. In the maze, ask Pip: north, east, then down the hole.
+
+
+  [The Heart Chamber]
+  - Talk to Commander Vex.
+  - Go to the altar with the Star Heart.
+  - Go to the west gallery.
+
+  [West Gallery]
+  - Look at the murals. (star fragment 12!)
+  - Pick up the silver horn. You get: silver horn.
+  - Go back to the heart chamber.
+
+  [The Heart Chamber]
+  - Use the silver horn with Commander Vex.
+  - Go to the east gallery.
+
+  [East Gallery]
+  - Pull the big plug.
+  - Use the silver horn with the soldier.
+  - Pull the big plug.
+  - Go back to the heart chamber.
+
+  [The Heart Chamber]
+  - Use the silver horn with Commander Vex.
+  - Go to the hidden trapdoor.
+
+  [The Catacombs]
+  - Take the archway.
+
+  [The Dead End]
+  - Talk to Commander Vex.
+  - Take the archway back to the catacombs.
+
+  [The Catacombs]
+  - Pull the old lever.
+  - Take the way up to the heart chamber.
+
+  [The Heart Chamber]
+  - Talk to Uncle Edmund and Bix.
+  - Go to the altar with the Star Heart.
+
+  [The Altar]
+  - Use the amulet with the raven lock.
+
+  [Bix's Workshop]
+  - Talk to Bix.
+  - Pick up the crystal hammer. You get: crystal hammer.
+  - Take the path east to the old crystal mines.
+
+  [The Old Mines]
+  - Go to the dark tunnel.
+  - Use the tall tree. You get: kite.
+  - Give the kite to the little Stronkie.
+  - Go to the dark tunnel.
+
+  [The Maze (1)]
+  - Talk to Pip.
+  - Take the passage ahead.
+
+  [The Maze (2)]
+  - Take the passage to the right.
+
+  [The Maze (3)]
+  - Go to the hole in the floor.
+
+  [The Crystal Vein]
+  - Look at the rubble. (star fragment 13!)
+  - Use the crystal hammer with the vein of star crystal. You get: star crystal.
+  - Take the way up.
+
+  [The Maze (3)]
+  - Take the passage ahead.
+
+  [The Maze (2)]
+  - Take the passage ahead.
+
+  [The Maze (1)]
+  - Take the passage to the left.
+
+  [The Old Mines]
+  - Take the path back to the workshop.
+
+  [Bix's Workshop]
+  - Give the star crystal to Bix.
+  - Go to STARRAVEN.
+
+======================================================================
+DISK 7 - CHAPTER SEVEN: VEX'S FLAGSHIP
+======================================================================
+Disk 7. The Insult-O-Tron: the answers are on the poster in the break room and from the laundry robot; the first one is Pip's joke from disk 6.
+
+
+  [Hangar, IRON RAVEN]
+  - Talk to STARRAVEN.
+  - Go to the door with a monkey-shaped hollow.
+
+  [Secret Holodeck]
+  - Pick up the sand. You get: T-shirt.
+  - Go back to the hangar.
+
+  [Hangar, IRON RAVEN]
+  - Go to the corridor.
+
+  [The Checkpoint]
+  - Go to the door to the laundry.
+
+  [The Laundry]
+  - Talk to the laundry robot.
+  - Look at the pile of dirty laundry. (star fragment 14!)
+  - Go back to the corridor.
+
+  [The Checkpoint]
+  - Go to the door to the break room.
+
+  [The Break Room]
+  - Look at the poster.
+  - Go back to the corridor.
+
+  [The Checkpoint]
+  - Go to the checkpoint.
+  - Use the nose glasses with the guard at the checkpoint.
+  - Go to the checkpoint.
+
+  [The Lift]
+  - Talk to Insult-O-Tron 3000: say "Then you must have been looking in a mirror.", then "Maybe, but your jokes still load from a datasette.", then "At least I'd be useful then, unlike you.".
+  - Take the lift to the prison deck.
+
+  [Prison Lobby]
+  - Talk to the janitor. You get: keycard.
+  - Go to the records room.
+
+  [Records Room]
+  - Open the file on the desk.
+  - Look at the filing cabinets. (star fragment 15!)
+  - Go back to the lobby.
+
+  [Prison Lobby]
+  - Go to the guardroom.
+
+  [The Guardroom]
+  - Go to the door to the control room.
+
+  [Prison Control]
+  - Pull the big lever.
+  - Go back to the guardroom.
+
+  [The Guardroom]
+  - Go back to the lobby.
+
+  [Prison Lobby]
+  - Take the lift up.
+  - Go to the cellblock.
+
+  [The Cellblock]
+  - Talk to Uncle Edmund.
+  - Go back to the lobby.
+
+  [Prison Lobby]
+  - Take the lift up.
+
+  [The Bridge]
+  - Talk to Uncle Edmund.
+  - Take the way to Vex's quarters.
+
+  [Vex's Quarters]
+  - Look at the bed. (star fragment 16!)
+  - Pick up the old photo. You get: old photo.
+  - Go back to the bridge.
+
+  [The Bridge]
+  - Take the ladder down to the pod bay. You get: plasma spanner.
+
+  [The Pod Bay]
+  - Take the ladder up to the bridge.
+
+  [The Bridge]
+  - Use the old photo with Vex.
+  - Go to the cannon room.
+
+  [The Cannon Room]
+  - Use the plasma spanner with the cannon controls.
+  - Go back to the bridge.
+
+  [The Bridge]
+  - Use the old photo with Vex.
+
+  [Home: the Garden]
+  - Talk to Pip.
+  - Go to Ravenmoor Manor.
+
+  [Home: the Hall]
+  - Talk to Uncle Edmund.
+  - Talk to Victor.
+  - Take the stairs up to the study.
+
+  [Home: the Study]
+  - Use the star fragments with the desk with the star globe.
+
+THE END. With all 16 star fragments on Uncle Edmund's desk you see the TRUE ENDING.

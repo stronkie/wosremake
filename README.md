@@ -11,13 +11,13 @@ The text adventure stays as it is: it is still on itch.io and in its own repo.
 
 | Disk | Chapter | Original chapters | Keepsake | Version |
 |---|---|---|---|---|
-| 1 | Chapter One: the Prologue | Prologue 1-3: The Grounds, The Manor, The Launch Pad | scrap of paper | V0.1.1 |
-| 2 | Chapter Two: Into Space | 1 Into Space, 2 The Derelict Station | space ration | V0.2.0 |
-| 3 | Chapter Three: Asteroid 42 | 3 Asteroid 42, 4 Space Pirates | rubber chicken | V0.3.0 |
-| 4 | Chapter Four: Landfall | 5 Landfall, 6 The Village | singing shell | V0.4.0 |
-| 5 | Chapter Five: The Crystal Mountains | 7 The Crystal Mountains, 8 The Sky Temple | spiked boots | V0.5.0 |
-| 6 | Chapter Six: The Star Heart | 9 The Star Heart, 10 Repairs | silver horn | V0.6.0 |
-| 7 | Chapter Seven: Vex's Flagship | 11 Vex's Flagship, 12 The Prison Deck, 13 The Bridge, Epilogue | - | V0.7.0 |
+| 1 | Chapter One: the Prologue | Prologue 1-3: The Grounds, The Manor, The Launch Pad | scrap of paper | V1.0 |
+| 2 | Chapter Two: Into Space | 1 Into Space, 2 The Derelict Station | space ration | V1.0 |
+| 3 | Chapter Three: Asteroid 42 | 3 Asteroid 42, 4 Space Pirates | rubber chicken | V1.0 |
+| 4 | Chapter Four: Landfall | 5 Landfall, 6 The Village | singing shell | V1.0 |
+| 5 | Chapter Five: The Crystal Mountains | 7 The Crystal Mountains, 8 The Sky Temple | spiked boots | V1.0 |
+| 6 | Chapter Six: The Star Heart | 9 The Star Heart, 10 Repairs | silver horn | V1.0 |
+| 7 | Chapter Seven: Vex's Flagship | 11 Vex's Flagship, 12 The Prison Deck, 13 The Bridge, Epilogue | - | V1.0 |
 
 Every chapter is its own disk and boots by itself. When you finish a chapter the game
 writes your story on that disk (`WOSR.ST2` ... `WOSR.ST7`: the star fragments you found,
@@ -33,8 +33,15 @@ is refused too. Dev mode (F5) skips the check.
 Chicken, untying Ricky and LeChuckle's rematch (disk 3), the wooden monkey and the nose
 glasses (disk 4) come back on disk 7. With all 16 star fragments you get the true ending.
 
-**Free demo:** `WorldOfStronkieRemake_Chapter1_Demo_V0.1.1.adf` - Part 1, The Grounds,
+**Free demo:** `WorldOfStronkieRemake_Chapter1_Demo_V1.0.adf` - Part 1, The Grounds,
 up to the front door of Ravenmoor Manor.
+
+## Downloads
+
+- The game: `WorldOfStronkieRemake_Chapter1..7_V1.0.adf` (+ WHDLoad), or
+  `WorldOfStronkieRemake_FullGame_V1.0_ADFs.zip` / `_FullGame_V1.0_WHDLoad.zip`.
+- In `docs/`: the manual, the disk labels, the box (A3 / A4 and a 3D picture), the map
+  (`WorldOfStronkieRemake_Map.png/.pdf`) and the walkthrough (`.pdf/.txt`).
 
 ## What you need
 
@@ -43,8 +50,8 @@ up to the front door of Ravenmoor Manor.
 
 ## Starting the game
 
-**From the floppy:** write `WorldOfStronkieRemake_ChapterN_V0.N.x.adf` to a disk (disk
-name `Stronkie Remake Ch N V0.N.x`) and boot from it. Keep the disks writable: the end
+**From the floppy:** write `WorldOfStronkieRemake_ChapterN_V1.0.adf` to a disk (disk
+name `Stronkie Remake Ch N V1.0`) and boot from it. Keep the disks writable: the end
 of a chapter writes your story on it. At the start of the next disk the game asks for
 the disk before it, reads the story and asks for its own disk back.
 
@@ -52,7 +59,7 @@ the disk before it, reads the story and asks for its own disk back.
 `WOSRC2`, `WOSRC2.DAT`, ... for disk 2 and so on) into ONE drawer and double-click the
 icon: then the story goes from chapter to chapter in that drawer by itself.
 
-**WHDLoad:** `WorldOfStronkieRemake_ChapterN_V0.N.x_WHDLoad.zip` (needs WHDLoad and
+**WHDLoad:** `WorldOfStronkieRemake_ChapterN_V1.0_WHDLoad.zip` (needs WHDLoad and
 kick40063.A600 in DEVS:Kickstarts; F10 quits).
 
 ## Playing
@@ -100,6 +107,14 @@ python3 tools/webplay.py disk.adf outdir steps # plays the disk in vAmigaWeb wit
 The engine (`*.s`) is World of Stronkie II's.
 
 ## Changelog
+
+### V1.0 (2026-11-27) - the complete game
+- All seven disks are V1.0: the full game, published on itch.io.
+- The full game also comes as one WHDLoad zip (all seven chapters in one drawer, so the
+  story carries over by itself) and as one zip with the seven ADFs.
+- Print kit: the instruction manual (A5 booklet), disk labels, the fold-up box (A3 / A4)
+  and a 3D picture of the box. Also: a map of every room, and the complete walkthrough.
+- Engine: room for 16 people (some chapters have more than 12).
 
 ### V0.2.0 - V0.7.0 (2026-11-27) - Chapters Two to Seven: the whole game
 - Disks 2-7: all the original chapters 1-13 and the epilogue, with the original

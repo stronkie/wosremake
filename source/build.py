@@ -34,7 +34,7 @@ CACHE = os.path.join(HERE, '.cache')
 VASM = os.environ.get('VASM', '/home/claude/amiga-toolkit/vasm/vasmm68k_mot')
 TOOLKIT = os.environ.get('AMIGA_TK', '/home/claude/amiga-toolkit')
 FONT = os.path.join(HERE, 'font8x8_basic.h')    # font8x8 (public domain), as WoS II uses it
-VERSIONS = {1: 'V0.1.1', 2: 'V0.2.0', 3: 'V0.3.0', 4: 'V0.4.0', 5: 'V0.5.0', 6: 'V0.6.0', 7: 'V0.7.0'}
+VERSIONS = {n: 'V1.0' for n in range(1, 8)}
 VERSION = VERSIONS[CH]
 PREFIX = 'WOSR' if CH == 1 else f'WOSRC{CH}'        # the file names of this chapter's disk
 CHAPTER_NAMES = {1: 'Chapter One: The Prologue', 2: 'Chapter Two: Into Space', 3: 'Chapter Three: Asteroid 42', 4: 'Chapter Four: Landfall', 5: 'Chapter Five: The Crystal Mountains', 6: 'Chapter Six: The Star Heart', 7: 'Chapter Seven: Vex\'s Flagship'}
