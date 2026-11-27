@@ -100,6 +100,16 @@ def first_visit(room, text, flag=None, extra=None):
     return s
 
 
+def once(s, flag, fn):
+    """add lines to a script that are only said the first time"""
+    L = s.label()
+    s.iff(flag, L)
+    s.setf(flag)
+    fn(s)
+    s.here(L)
+    return s
+
+
 # the star fragments: 16 tiny pieces of starlight in the whole game, carried from disk to disk
 G.thing('fragments', None, label='star fragments', icon='fragment')
 simple('fragments', 'look', 'pilot', 'Tiny pieces of starlight. They hum when I hold them together. '

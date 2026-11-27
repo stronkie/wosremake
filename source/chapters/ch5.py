@@ -330,8 +330,9 @@ first_visit('heartdoor', 'You stand before a golden door covered in symbols. Beh
 chapter_start(['The glider carries you high over forests and rivers, until a storm throws you down on a snowy ledge.'],
               ('Chapter 7: The Crystal Mountains', 'p09_card'), 'ledge', 200, 140, LEFT, music='p10')
 fv = G.rooms['ledge']['enter']
-fv.say('narrator', 'NOVA on your radio:')
-nova(fv, 'Pilot! Someone broke into the STARRAVEN and took the amulet. The tracks lead to the black tents!')
+once(fv, 'intro_said', lambda s: (s.say('narrator', 'NOVA on your radio:'),
+                                  nova(s, 'Pilot! Someone broke into the STARRAVEN and took the amulet. The tracks lead '
+                                       'to the black tents!')))
 default_answers()
 VOICES = {a[0]: a[3] for a in ACTORS}
 

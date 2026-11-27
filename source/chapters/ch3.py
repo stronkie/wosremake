@@ -661,8 +661,8 @@ first_visit('pengine', 'You are in the engine room of the SPACE MONKEY. The trac
 chapter_start(['The STARRAVEN races away from KX-9... and then the engines cough.'],
               ('Chapter 3: Asteroid 42', 'p05_card'), 'pad', 60, 156, RIGHT, music='p06')
 fv = G.rooms['pad']['enter']
-nova(fv, 'That hyperjump drained our fuel cells, pilot. The nearest fuel is on Asteroid 42, the most wretched hive '
-     'of scum and villainy this side of Andromeda. Don\'t panic. And hold on to your towel.')
+once(fv, 'intro_said', lambda s: nova(s, 'That hyperjump drained our fuel cells, pilot. The nearest fuel is on Asteroid 42, the most wretched hive '
+     'of scum and villainy this side of Andromeda. Don\'t panic. And hold on to your towel.'))
 default_answers()
 VOICES = {a[0]: a[3] for a in ACTORS}
 

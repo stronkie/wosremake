@@ -415,8 +415,8 @@ chapter_start(['The STARRAVEN breaks free of the Earth. A calm voice fills the c
               ('Chapter 1: Into Space', 'say_c1'), 'cockpit', 160, 162, BACK, music='p04')
 fv = first_visit('cockpit', 'You are in the cockpit of the STARRAVEN. Through the window the Earth glows blue. '
                  'The navigation screen flashes an error.')
-nova(fv, 'Hello, pilot. I am NOVA, the ship\'s computer. The amulet has woken me. '
-     'Together we must find the lost World of Stronkie.')
+once(fv, 'intro_said', lambda s: nova(s, 'Hello, pilot. I am NOVA, the ship\'s computer. The amulet has woken me. '
+     'Together we must find the lost World of Stronkie.'))
 
 default_answers()
 VOICES = {a[0]: a[3] for a in ACTORS}

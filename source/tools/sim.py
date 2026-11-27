@@ -27,6 +27,7 @@ class Sim:
     def __init__(self, verbose=False):
         self.flags = set()
         self.inv = []
+        self.inv_top = 0
         self.state = {}
         for o in G.obj_order[1:]:
             self.state[o] = G.objects[o]['state'] if G.objects[o]['room'] else 0
@@ -103,11 +104,14 @@ class Sim:
                 o = G.obj_order[a[0]]
                 if o not in self.inv:
                     self.inv.append(o)
+                    self.inv_top = (len(self.inv) - 1) & ~7     # like inv_add: show the new one
                 self.log('+', o)
             elif op == 'DROP':
                 o = G.obj_order[a[0]]
                 if o in self.inv:
                     self.inv.remove(o)
+                    if self.inv_top >= len(self.inv):
+                        self.inv_top = 0
                 self.log('-', o)
             elif op == 'SETF':
                 self.flags.add(a[0])
@@ -195,6 +199,7 @@ class Sim:
         for n in it:
             if n in G.objects and n not in self.inv:
                 self.inv.append(n)
+                self.inv_top = (len(self.inv) - 1) & ~7
 
     def go(self, room, depth=0):
         self.room = room

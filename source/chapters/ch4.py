@@ -512,7 +512,7 @@ chapter_start(['LeChuckle\'s parting shot has done its work. The STARRAVEN dives
                'Alarms scream, the engines cough... and with a terrible CRASH you land on the World of Stronkie.'],
               ('Chapter 5: Landfall', 'p07_card'), 'wreck', 150, 162, BACK, music='p08')
 fv = G.rooms['wreck']['enter']
-nova(fv, 'Main power crystal shattered. Pilot, I need a new power crystal to repair the ship.')
+once(fv, 'intro_said', lambda s: nova(s, 'Main power crystal shattered. Pilot, I need a new power crystal to repair the ship.'))
 default_answers()
 VOICES = {a[0]: a[3] for a in ACTORS}
 

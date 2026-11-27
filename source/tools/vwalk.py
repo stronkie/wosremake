@@ -89,22 +89,42 @@ def main():
             continue
         ev0 = len(S.events)
         inv_before = list(S.inv)
+        top = [S.inv_top]
+
+        def tg(o):                      # the click on o: an item (scroll the inventory to it) or a thing
+            def f():
+                if o in inv_before:
+                    i = inv_before.index(o)
+                    while i < top[0]:
+                        click(183, 190)
+                        top[0] -= 4
+                    while i >= top[0] + 8:
+                        click(183, 220)
+                        top[0] += 4
+                    return inv(i - top[0])
+                return pos
+            pos = None if o in inv_before else target(S, o)
+            return f
         if c == 'walk' or c == 'talk' or len(st) < 3:
-            tgt = [target(S, st[1])]
+            tgt = [tg(st[1])]
         else:
-            tgt = [inv(inv_before.index(st[1])), target(S, st[2])]
+            tgt = [tg(st[1]), tg(st[2])]
+        top0 = S.inv_top
         S.step(st)
+        changed = S.inv_top != top0 or S.inv != inv_before
         out.extend(['k 56', 'w 1', 'k 56', 'w 2'])
         if c == 'walk':
-            click(*tgt[0])
+            click(*tgt[0]())
             out.append('w 6')
         else:
             click(*VERB[c])
             for t in tgt:
-                click(*t)
+                click(*t())
             if c in ('use', 'give') and len(st) < 3 and st[1] in inv_before:
-                click(*tgt[0])                    # the same item again: use it on its own
+                click(*tgt[0]())                  # the same item again: use it on its own
             out.append('w 7')
+        if not changed:
+            S.inv_top = top[0]
         for kind, v in S.events[ev0:]:
             if kind == 'say':
                 out.extend(['w 2', 'k 56'])
