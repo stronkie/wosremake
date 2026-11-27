@@ -781,6 +781,8 @@ def build_adf():
         subprocess.run([sys.executable, os.path.join(HERE, 'tools', 'storyfile.py'), os.path.join(src, f'WOSR.ST{CH}'),
                         os.environ['WOS2_TESTSTORY']], check=True)
     ADF.build(disk, volume_name(CH, DEMO), src, os.path.join(TOOLKIT, 'tools', 'bootblock.bin'))
+    if CH == 1 and not DEMO:                    # the Stronkie Soft boot intro before the game (V1.1 on)
+        subprocess.run([sys.executable, os.path.join(TOOLKIT, 'tools', 'add_intro.py'), disk, disk], check=True)
     used = sum(os.path.getsize(os.path.join(src, f)) for f in os.listdir(src) if os.path.isfile(os.path.join(src, f)))
     print(os.path.basename(disk), f'{used} bytes of files')
     return disk

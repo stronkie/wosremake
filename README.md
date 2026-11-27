@@ -108,6 +108,13 @@ The engine (`*.s`) is World of Stronkie II's.
 
 ## Changelog
 
+### V1.1 (2026-11-27) - Chapter One disk: the boot intro (not yet on itch)
+- The Stronkie Soft boot intro (SSIntro, from the toolkit: animated logo, music "intro numma" by Animal of
+  Superior Art Creations) plays before the game on the Chapter One floppy
+  (`WorldOfStronkieRemake_Chapter1_V1.1.adf`, also in `WorldOfStronkieRemake_FullGame_V1.1_ADFs.zip`).
+  Fire, a mouse button or any key skips it. The disk name stays `Stronkie Remake Ch 1 V1.0`, so the
+  disk checks between chapters work as before. Disks 2-7, the WHDLoad versions and the demo are unchanged.
+
 ### V1.0 (2026-11-27) - the complete game
 - All seven disks are V1.0: the full game, published on itch.io.
 - The full game also comes as one WHDLoad zip (all seven chapters in one drawer, so the
