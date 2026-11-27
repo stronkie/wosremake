@@ -1,0 +1,196 @@
+"""World of Stronkie remake - the rooms, things, people,
+conversations and scripts of one chapter.
+
+The chapter comes from the environment (WOS2_CHAPTER, 1-5): this file has the
+pieces every chapter uses, chapters/chN.py the story. A line of text that
+starts with '*' is spoken (key lines only)."""
+import os
+from wosdata import Script, Strings, V, RIGHT, LEFT, FRONT, BACK
+
+CH = int(os.environ.get('WOS2_CHAPTER', '1'))
+DEMO = bool(os.environ.get('WOS2_DEMO'))
+START_ACTORS = {}          # actor -> (room, x, y, dir) at the start
+VARIANTS = {}              # object picture -> (room art, base kwargs, variant kwargs)
+DEV_SPOTS = []
+DEV_ITEMS = []
+BLOCK = {}
+
+
+class Game:
+    def __init__(self):
+        self.strings = Strings()
+        self.flags = {}
+        self.objects = {}            # name -> dict
+        self.obj_order = [None]      # 0 = nothing
+        self.rooms = {}
+        self.room_order = []
+        self.scripts = []
+        self.actors = [a[0] for a in ACTORS]
+        self.specials = SPECIALS                           # costume -> special animations
+
+    # ---- names -> numbers
+    def act(self, a):
+        return self.actors.index(a) if isinstance(a, str) else a
+
+    def obj(self, o):
+        return self.obj_order.index(o)
+
+    def flag(self, f):
+        if f not in self.flags:
+            self.flags[f] = len(self.flags) + 1
+            assert self.flags[f] < 256
+        return self.flags[f]
+
+    def room_no(self, r):
+        return 0 if r is None else self.room_order.index(r) + 1
+
+    def sound_no(self, s):
+        return SOUNDS.index(s) + 1
+
+    def song_no(self, s):
+        return SONGS.index(s) + 1
+
+    def special_no(self, a, spec):
+        cost = ACTORS[self.act(a)][1]
+        return self.specials[cost].index(spec)
+
+    def voice_of(self, a):
+        return self.actors[self.act(a)]
+
+    # ---- building
+    def script(self, name=None):
+        s = Script(self, name)
+        self.scripts.append(s)
+        return s
+
+    def thing(self, name, room, box=None, walk=None, face=FRONT, verb='look', label=None, actor=None,
+              image=None, state=1, icon=None):
+        """a thing in a room (room None: something you carry)"""
+        self.objects[name] = dict(name=name, label=label or name, room=room, box=box, walk=walk, face=face,
+                                  verb=V[verb], actor=actor, image=image, state=state, icon=icon, handlers=[])
+        self.obj_order.append(name)
+        if room:
+            self.rooms[room]['objects'].append(name)
+        return name
+
+    def on(self, obj, verb, script, other=None):
+        self.objects[obj]['handlers'].append((V[verb], other, script))
+
+    def room(self, name, art, walk=None, music=None, image_variants=None):
+        self.rooms[name] = dict(name=name, art=art, walk=walk or [], music=music, objects=[], enter=None,
+                                timer=None, ticks=0, random=None, rmin=0, rmax=0)
+        self.room_order.append(name)
+
+
+
+
+
+def say(s, *lines):
+    for who, text in lines:
+        s.say(who, text)
+    return s
+
+
+def simple(obj, verb, who, *texts):
+    s = G.script()
+    for t in texts:
+        s.say(who, t)
+    G.on(obj, verb, s)
+
+
+def exit_to(obj, room, x, y, d):
+    s = G.script()
+    s.room(room, x, y, d)
+    G.on(obj, 'walk', s)
+    G.on(obj, 'open', s)
+
+
+
+def default_answers():
+    """the answers for each verb when nothing else fits"""
+    for verb, lines in DEFAULTS.items():
+        s = G.script(f'def_{verb}')
+        s.randsay('pilot', lines)
+
+
+DEFAULTS = {
+    'walk': ['I\'d rather not.'],
+    'give': ['I don\'t think they want that.', 'I\'d better keep it.'],
+    'pickup': ['I can\'t pick that up.', 'It\'s not mine to take.', 'Why would I want that?'],
+    'use': ['That doesn\'t work.', 'I can\'t use that.', 'Hmm. No.',
+            'A hollow voice says: wrong game. This isn\'t Colossal Cave.'],
+    'open': ['It doesn\'t open.', 'I can\'t open that.'],
+    'look': ['Nothing special.', 'It looks like it\'s supposed to look.'],
+    'push': ['It won\'t budge.', 'Pushing it won\'t help.'],
+    'close': ['It doesn\'t close.', 'I can\'t close that.'],
+    'talk': ['It doesn\'t say much.', 'I\'d rather talk to people.',
+             'I wave my hand. These aren\'t the droids... the commands I\'m looking for.'],
+    'pull': ['It won\'t budge.', 'Pulling it won\'t help.'],
+}
+
+CH_NAMES = {1: 'Chapter One', 2: 'Chapter Two', 3: 'Chapter Three', 4: 'Chapter Four', 5: 'Chapter Five',
+            6: 'Chapter Six'}
+
+
+def story_start(s):
+    """the start of a chapter: bring the story along from the last chapter
+    (this drawer, or the last chapter's disk), or play the standard story"""
+    prev, this = CH_NAMES[CH - 1], CH_NAMES[CH]
+    ok, ask, back, done, again, volchk, go = (s.label() for _ in range(7))
+    s.storyload(0, 'story_ok')
+    s.iff('story_ok', ok)
+    s.here(ask)
+    s.cutoff()
+    s.card(f'Your story from {prev} is not in this drawer. Put the {prev} disk in the drive.', wait=False)
+    s.dialog([(f'The {prev} disk is in. Read my story.', again, None),
+              ('Play the standard story (start fresh).', done, None)])
+    s.here(again)
+    s.storyload(1, 'story_ok')
+    s.iff('story_ok', back)
+    s.card(f'There is no story on that disk. Did you finish {prev}?', wait=True)
+    s.jmp(ask)
+    s.here(back)
+    s.card(f'Your story is read! Now put the {this} disk back in.', wait=False)
+    s.dialog([(f'The {this} disk is back in.', volchk, None)])
+    s.here(volchk)
+    s.storyvol('story_vol')
+    s.iff('story_vol', ok)
+    s.card(f'That is not the {this} disk.', wait=True)
+    s.jmp(back)
+    s.here(done)
+    s.storydef()
+    s.cuton()
+    s.card('The standard story: everything as most players would have it.', wait=True)
+    s.jmp(go)
+    s.here(ok)
+    s.cuton()
+    s.card(f'Your story from {prev} continues...', wait=True)
+    s.here(go)
+    return s
+
+
+def story_end(s):
+    """the end of a chapter: write the story for the next chapter"""
+    nxt = CH_NAMES.get(CH + 1)
+    if not nxt:
+        return s
+    ok, ask, skip = s.label(), s.label(), s.label()
+    s.here(ask)
+    s.storysave('story_saved')
+    s.iff('story_saved', ok)
+    s.cutoff()
+    s.card('I could not write your story to the disk. Is it write-protected?', wait=False)
+    s.dialog([('I fixed it. Try again.', ask, None), (f'Go on without it ({nxt} will play the standard story).', skip, None)])
+    s.here(ok)
+    s.cuton()
+    s.card(f'Your story is saved. {nxt} will continue it.', wait=True)
+    s.here(skip)
+    s.cuton()
+    return s
+
+
+import story                                     # noqa: E402
+_f = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chapters', f'ch{CH}.py')
+exec(compile(open(_f).read(), _f, 'exec'), globals())
+for _n in story.FLAGS:
+    G.flag(_n)
