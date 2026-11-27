@@ -724,8 +724,24 @@ set_flag_go
         bset    d0,(a0,d1.w)
         GO
 
-req_off                             ; (the game has the DOS requesters off already: sys.s)
-req_on  rts
+req_off                             ; before a DOS call: lend the blitter to the disk (like stream_read),
+        movem.l d0-d1/a0-a1/a6,-(sp)   ; or trackdisk waits for it forever (the DOS requesters are off: sys.s)
+        bsr     blit_wait
+        tst.b   blit_owned
+        beq     .x
+        move.l  gfxbase,a6
+        jsr     _LVODisownBlitter(a6)
+.x      movem.l (sp)+,d0-d1/a0-a1/a6
+        rts
+req_on                              ; after the DOS call: the blitter is ours again
+        movem.l d0-d1/a0-a1/a6,-(sp)
+        tst.b   blit_owned
+        beq     .x
+        move.l  gfxbase,a6
+        jsr     _LVOOwnBlitter(a6)
+        jsr     _LVOWaitBlit(a6)
+.x      movem.l (sp)+,d0-d1/a0-a1/a6
+        rts
 
 story_apply                         ; story -> this chapter's flags and inventory
         move.l  story_map,a2
