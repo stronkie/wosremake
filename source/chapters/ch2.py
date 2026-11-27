@@ -5,7 +5,7 @@ Derelict Station: KX-9), with the same story, rooms, pictures, puzzles, music
 and speech, played with the mouse. Keepsake of this disk: the space ration."""
 exec(compile(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chapters', 'common.py')).read(), 'common.py', 'exec'))
 SONGS = ['title', 'p04', 'p05']
-add_actor('robot', 27)
+add_actor('robot', 22)
 
 # =================================================================== rooms
 G.room('cockpit', 'cockpit', music='p04', walk=[[(30, 156), (290, 156), (290, 167), (30, 167)]])

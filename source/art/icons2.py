@@ -80,5 +80,59 @@ def compass():
     return P.finish()
 
 
-ICONS.update({'ration': ration, 'crowbar': crowbar, 'crystal': crystal, 'boots': boots, 'disc': disc,
+def burger():
+    P = IPen()
+    P.ellipse(16, 9, 11, 6, LBROWN)
+    P.rect(5, 12, 27, 14, GREEN)
+    P.rect(5, 14, 27, 16, BROWN)
+    P.ellipse(16, 18, 11, 3, LBROWN)
+    P.dot(12, 6, SENT)
+    P.dot(19, 7, SENT)
+    return P.finish()
+
+
+def coin(n=1):
+    P = IPen()
+    for i in range(n):
+        x, y = 16 - 4 * i, 13 - 3 * i
+        P.ellipse(x, y, 7, 7, GOLD)
+        P.ellipse(x, y, 5, 5, HI)
+        P.rect(x - 1, y - 3, x + 1, y + 3, GOLD)
+    return P.finish()
+
+
+def napkin():
+    P = IPen()
+    P.poly([(5, 6), (26, 4), (27, 19), (6, 21)], WHITE)
+    P.poly([(18, 12), (24, 10), (25, 16)], SENT)
+    P.limb(8, 9, 18, 8, 0.6, BLUE)
+    P.limb(8, 13, 16, 12, 0.6, BLUE)
+    return P.finish()
+
+
+def fuelcell():
+    P = IPen()
+    P.rect(10, 4, 22, 22, GREY)
+    P.rect(12, 7, 20, 19, GREEN)
+    P.rect(13, 8, 15, 18, HI)
+    P.rect(13, 2, 19, 4, MID)
+    return P.finish()
+
+
+def chicken():
+    P = IPen()
+    P.ellipse(14, 14, 9, 6, GOLD)
+    P.ellipse(23, 8, 4, 4, GOLD)
+    P.poly([(27, 7), (31, 8), (27, 10)], LBROWN)
+    P.poly([(22, 3), (24, 1), (25, 5)], RED)
+    P.dot(23, 7, DARK)
+    P.limb(10, 19, 9, 23, 0.8, LBROWN)
+    P.limb(16, 19, 17, 23, 0.8, LBROWN)
+    P.ellipse(14, 14, 2.5, 2.5, GREY)
+    P.ellipse(14, 14, 1, 1, DARK)
+    return P.finish()
+
+
+ICONS.update({'burger': burger, 'coin': coin, 'cash': lambda: coin(3), 'napkin': napkin, 'fuelcell': fuelcell,
+              'chicken': chicken, 'ration': ration, 'crowbar': crowbar, 'crystal': crystal, 'boots': boots, 'disc': disc,
               'feather': feather, 'shell': shell, 'medal': medal, 'compass': compass})

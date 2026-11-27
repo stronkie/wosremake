@@ -136,7 +136,7 @@ import story as _story                           # noqa: E402
 KEEP_INFO = {   # keepsake: (label, icon, look text)
     'paper': ('scrap of paper', 'paper', 'It reads: "I buried the winch handle so they cannot raise the key. - E." I keep it for luck.'),
     'ration': ('space ration', 'ration', 'A grey bar wrapped in foil. My lucky ration. I will never eat it.'),
-    'feather': ('blue feather', 'feather', 'A shining blue feather. A souvenir I will keep forever.'),
+    'chicken': ('rubber chicken', 'chicken', 'A rubber chicken with a pulley in the middle. Everybody needs one. I am never letting go of it.'),
     'shell': ('sea shell', 'shell', 'A spiral shell. If I hold it to my ear I hear an ocean on a world far away.'),
     'medal': ('bronze medal', 'medal', 'A bronze medal. I earned this one.'),
     'compass': ('star compass', 'compass', 'A little compass. Its needle always points to Stronkie.'),

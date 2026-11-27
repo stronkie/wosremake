@@ -115,5 +115,46 @@ def maproom(chart=False):
     return cv
 
 
+# ------------------------------------------------------------- disk 3: Asteroid 42, Space Pirates
+def bar(napkin=False):
+    cv = base('bar')
+    if napkin:
+        n = cv.poly([(196, 125), (210, 123), (214, 128), (199, 130)])
+        cv.fill(n, '#e8e4d8')
+        cv.fill(cv.line([(200, 126), (208, 125)], 0.6), '#5060c0')
+    return cv
+
+
+def stan(chicken=False):
+    cv = base('stan')
+    if chicken:
+        b = cv.ellipse(86, 88, 9, 4)
+        cv.fill(b, '#f0c020')
+        cv.fill(cv.ellipse(96, 84, 3, 3), '#f0c020')
+        cv.fill(cv.poly([(98, 83), (102, 84), (98, 85)]), '#d07010')
+        cv.fill(cv.ellipse(86, 88, 2, 2), '#909090')
+    return cv
+
+
+def deck():
+    cv = base('deck')
+    # the green space parrot on the rail
+    body = cv.ellipse(56, 92, 5, 8)
+    cv.fill(body, '#30c040')
+    cv.fill(cv.ellipse(58, 82, 4, 4), '#40d050')
+    cv.fill(cv.poly([(61, 81), (65, 83), (61, 85)]), '#f0c020')
+    cv.fill(cv.ellipse(59, 81, 1, 1), '#000000')
+    cv.fill(cv.poly([(52, 96), (48, 106), (54, 100)]), '#2080e0')
+    return cv
+
+
+def pengine(ricky_gone=False):
+    cv = base('pengine')
+    if ricky_gone:
+        copy(cv, 0, 96, 34, 168, 262, 96)
+    return cv
+
+
+ROOM_ART.update({'bar': bar, 'stan': stan, 'deck': deck, 'pengine': pengine})
 ROOM_ART.update({'cockpit': cockpit, 'galley': galley, 'engine': engine, 'cargo': cargo, 'airlock': airlock,
                  'stcorr': stcorr, 'maproom': maproom})

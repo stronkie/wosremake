@@ -495,12 +495,16 @@ def guard_extra(P, s, by, view):
     P.poly([(8 * s, by - 26 * s), (10 * s, by - 20 * s), (6 * s, by - 20 * s)], WHITE)
 
 
+PIRATE = dict(h=49, body=DORANGE, body2=BROWN, sleeve=DORANGE, sleeve2=BROWN, shirt=WHITE, collar=WHITE,
+              legs=BLACK, legs2=DARK, shoes=BLACK, hair_side=vex_hair_side, hair_front=vex_hair_front,
+              hair_back=vex_hair_back)     # World of Stronkie remake: LeChuckle's guard
 SUITED = dict(PILOT, body=SILVER, body2=SBLUE, sleeve=SILVER, sleeve2=SBLUE, shirt=ORANGE, collar=SILVER,
               legs=SILVER, legs2=SBLUE)     # World of Stronkie remake: the silver flight suit
 
 COSTUMES = {
     'suit': lambda: costume_human(SUITED, 'pilot'),
     'pilot': lambda: costume_human(PILOT, 'pilot'),
+    'pirate': lambda: costume_human(PIRATE, 'pirate'),
     'lyra': lambda: costume_human(LYRA, 'lyra'),
     'pip': lambda: costume_stronkie('pip'),
     'bix': lambda: costume_stronkie('bix', extra=bix_extra),
