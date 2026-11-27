@@ -350,5 +350,77 @@ def maze3():
 
 ROOM_ART.update({'heart': heart, 'westgal': westgal, 'eastgal': eastgal, 'catacomb': catacomb, 'workshop': workshop,
                  'mineentry': mineentry, 'maze3': maze3})
+# ------------------------------------------------------------- disk 7: Vex's flagship, the prison deck, the bridge, home
+def breakroom(badge=True):
+    cv = base('breakroom')
+    if not badge:
+        copy(cv, 190, 126, 208, 134, 162, 126)
+    return cv
+
+
+def laundry(uniform=False):
+    cv = base('lockers')
+    robot(cv, 36, 160, True)
+    for x, y, c in ((262, 150, '#3a3f4a'), (282, 152, '#2a2e38'), (300, 148, '#454a56'), (276, 140, '#50566a'),
+                    (292, 138, '#3a3f4a'), (306, 156, '#e0e0d0')):
+        cv.fill(cv.ellipse(x, y, 14, 9), c)
+    if uniform:
+        u = cv.rect(146, 117, 176, 125)
+        cv.fill(u, '#18181e')
+        cv.fill(cv.rect(146, 117, 176, 118.5), '#30303a')
+        cv.fill(cv.ellipse(161, 121, 2, 2), '#c03020')
+    return cv
+
+
+def lift(tron=False, tron_off=False):
+    cv = base('lift')
+    if tron:
+        robot(cv, 156, 150, True)
+        cv.fill(cv.ellipse(156, 118, 8, 6), '#404650')               # the loudspeaker
+        cv.fill(cv.ellipse(156, 118, 5, 4), '#101014')
+    if tron_off:
+        robot(cv, 236, 150, False)
+        cv.fill(cv.ellipse(236, 118, 8, 6), '#404650')
+        for k in range(3):
+            cv.fill(cv.ellipse(232 + k * 5, 80 - k * 6, 3, 3), '#808080')     # smoke
+    return cv
+
+
+def guardroom(guard=False, out=False):
+    cv = base('guardroom')
+    if guard:
+        soldier(cv, 196, 140)
+        cv.fill(cv.rect(186, 120, 206, 122), '#e0e0e0')              # the keycard on his belt
+    if out:
+        g = cv.rect(176, 138, 216, 146)
+        cv.fill(g, '#141418')
+        cv.fill(cv.ellipse(220, 141, 5, 4.5), '#1c1c22')
+        for x, y in ((150, 150), (240, 152), (200, 156)):
+            cv.fill(cv.ellipse(x, y, 16, 3), '#8ab0d0')               # soapy water
+    return cv
+
+
+def fbridge(pirates=False):
+    cv = base('fbridge')
+    if pirates:
+        for x in (244, 260, 276):
+            soldier(cv, x, 156)
+            cv.fill(cv.rect(x - 5, 125, x + 5, 128), '#c02020')
+    return cv
+
+
+def vexroom(photo=True):
+    cv = base('vexroom')
+    if not photo:
+        copy(cv, 258, 96, 284, 132, 224, 96)
+    return cv
+
+
+def egarden():
+    return base('egarden')
+
+
+ROOM_ART.update({'breakroom': breakroom, 'laundry': laundry, 'lift': lift, 'guardroom': guardroom,
+                 'fbridge': fbridge, 'vexroom': vexroom})
 ROOM_ART.update({'cockpit': cockpit, 'galley': galley, 'engine': engine, 'cargo': cargo, 'airlock': airlock,
                  'stcorr': stcorr, 'maproom': maproom})

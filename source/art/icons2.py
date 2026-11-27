@@ -253,6 +253,50 @@ def kite():
     return P.finish()
 
 
+def badge():
+    P = IPen()
+    P.poly([(16, 2), (26, 6), (24, 18), (16, 22), (8, 18), (6, 6)], GOLD)
+    P.poly([(12, 9), (20, 9), (16, 16)], DARK)
+    return P.finish()
+
+
+def tshirt():
+    P = IPen()
+    P.poly([(8, 3), (13, 5), (19, 5), (24, 3), (30, 9), (25, 12), (24, 22), (8, 22), (7, 12), (2, 9)], WHITE)
+    P.rect(11, 11, 21, 13, RED)
+    P.rect(11, 15, 19, 16, BLUE)
+    return P.finish()
+
+
+def spanner():
+    P = IPen()
+    P.limb(6, 20, 22, 6, 1.6, GREY)
+    P.ellipse(24, 5, 4, 4, CYAN)
+    P.ellipse(24, 5, 1.5, 1.5, BG)
+    P.ellipse(5, 21, 3, 3, GREY)
+    return P.finish()
+
+
+def photo():
+    P = IPen()
+    P.rect(5, 3, 27, 21, SENT)
+    P.rect(7, 5, 25, 19, GREY)
+    P.ellipse(13, 11, 2.5, 2.5, LBROWN)
+    P.ellipse(19, 11, 2.5, 2.5, LBROWN)
+    P.rect(11, 14, 21, 19, MID)
+    return P.finish()
+
+
+def bucket2():
+    P = IPen()
+    P.poly([(8, 7), (24, 7), (22, 22), (10, 22)], GREY)
+    P.ellipse(16, 7, 8, 2, CYAN)
+    P.limb(8, 7, 16, 1, 0.6, DARK)
+    P.limb(24, 7, 16, 1, 0.6, DARK)
+    return P.finish()
+
+
+ICONS.update({'badge': badge, 'tshirt': tshirt, 'spanner': spanner, 'photo': photo, 'mopbucket': bucket2})
 ICONS.update({'horn': horn, 'hammer': hammer, 'kite': kite, 'starcrystal': lambda: crystal(CYAN, WHITE)})
 ICONS.update({'snowball': snowball, 'spikes': spikes, 'stardust': stardust})
 ICONS.update({'extinguisher': extinguisher, 'fruit': fruit, 'monkey': monkey, 'map': scroll_map, 'banner': banner,

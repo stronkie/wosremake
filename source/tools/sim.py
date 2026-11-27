@@ -274,6 +274,6 @@ def play(walk, verbose=False, story=None):
 if __name__ == '__main__':
     ch = game.CH
     ns = {}
-    exec(open(os.path.join(HERE, 'chapters', f'ch{ch}_walk.py')).read(), ns)
+    exec(open(os.environ.get('VW_WALK') or os.path.join(HERE, 'chapters', f'ch{ch}_walk.py')).read(), ns)
     s = play(ns['WALK'], '-v' in sys.argv, ns.get('STORY'))
     print(f'chapter {ch}: {len(ns["WALK"])} steps OK, ended={s.ended}, {len(s.said)} lines said, story out: {s.saved}')
