@@ -146,8 +146,10 @@ def chapter_start(intro_cards, part_card, room, x, y, d=BACK, music=None):
     st.room('title', 0, 0)
     st.put('pilot', None, 0, 0)
     st.music('title')
+    st.hampic(1)                    # the painted title screen (HAM6) over the title room
     st.say('narrator', '*Welcome to the World of Stronkie!', wait=False)
     st.waitkey()
+    st.hampic(0)
     st.room('cards', 0, 0)
     story_start(st)
     st.cuton()

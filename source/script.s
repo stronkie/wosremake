@@ -157,7 +157,7 @@ op_table
         dc.l    op_cutoff,op_randsay,op_anim,op_animnw,op_card,op_has,op_nothas,op_endgame
         dc.l    op_fade,op_costume,op_ifroom,op_speech,op_cardnw,op_setstate,op_waitkey
         dc.l    op_storyload,op_storydef,op_storysave,op_storyvol
-        dc.l    op_randjmp,op_ifhere,op_ifnhere
+        dc.l    op_randjmp,op_ifhere,op_ifnhere,op_hampic
 NOPS    = (*-op_table)/4
 
 op_end  clr.l   SL_PC(a5)
@@ -540,6 +540,55 @@ op_waitkey
         clr.b   key_hit
         moveq   #0,d1
         WAITFOR W_KEY
+
+op_hampic                           ; .w 1: the painted title (HAM, PREFIX.TTL) over the screen, 0: off
+        move.w  (a4)+,d0
+        beq     .off
+        movem.l d2-d7/a2-a6,-(sp)
+        bsr     ham_on
+        movem.l (sp)+,d2-d7/a2-a6
+        GO
+.off    movem.l d2-d7/a2-a6,-(sp)
+        bsr     ham_off
+        movem.l (sp)+,d2-d7/a2-a6
+        GO
+
+ham_on                              ; load PREFIX.TTL into chip memory and show it (no memory: nothing)
+        tst.l   ham_mem
+        bne     .x
+        bsr     req_off
+        lea     n_ttl,a0
+        move.l  #MEMF_CHIP,d1
+        bsr     load_whole
+        bsr     req_on
+        tst.l   d1
+        beq     .x
+        move.l  d0,ham_mem
+        move.l  d1,ham_size
+        move.l  d0,a0               ; the copper list after the planes and the colours
+        add.l   #HAM_COP,a0
+        move.l  a0,a2
+        bsr     ham_copper
+        move.l  ham_mem,a1
+        add.l   #HAM_PAL,a1
+        bsr     ham_colours
+        move.l  #$fffffffe,(a0)+
+        bsr     wait_frame
+        move.l  a2,CUSTOM+COP1LC
+.x      rts
+
+ham_off
+        tst.l   ham_mem
+        beq     .x
+        move.l  p_copper,CUSTOM+COP1LC
+        bsr     wait_frame          ; (the copper has left the old list)
+        bsr     wait_frame
+        move.l  4.w,a6
+        move.l  ham_mem,a1
+        move.l  ham_size,d0
+        jsr     _LVOFreeMem(a6)
+        clr.l   ham_mem
+.x      rts
 
 op_fade move.w  (a4)+,d0
         bsr     fade_to

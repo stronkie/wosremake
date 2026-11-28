@@ -34,7 +34,7 @@ CACHE = os.path.join(HERE, '.cache')
 VASM = os.environ.get('VASM', '/home/claude/amiga-toolkit/vasm/vasmm68k_mot')
 TOOLKIT = os.environ.get('AMIGA_TK', '/home/claude/amiga-toolkit')
 FONT = os.path.join(HERE, 'font8x8_basic.h')    # font8x8 (public domain), as WoS II uses it
-VERSIONS = {n: 'V1.0' for n in range(1, 8)}
+VERSIONS = {n: 'V1.2' for n in range(1, 8)}
 VERSION = VERSIONS[CH]
 PREFIX = 'WOSR' if CH == 1 else f'WOSRC{CH}'        # the file names of this chapter's disk
 CHAPTER_NAMES = {1: 'Chapter One: The Prologue', 2: 'Chapter Two: Into Space', 3: 'Chapter Three: Asteroid 42', 4: 'Chapter Four: Landfall', 5: 'Chapter Five: The Crystal Mountains', 6: 'Chapter Six: The Star Heart', 7: 'Chapter Seven: Vex\'s Flagship'}
@@ -48,6 +48,7 @@ def volume_name(ch, demo=False):
     return v
 WHD_INC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'whdload', 'inc')
 GAME_NAME = 'WorldOfStronkieRemake'
+INTRO = os.path.join(TOOLKIT, 'intro', 'disk', 'SSIntro')    # the Stronkie Soft boot intro (packed)
 ORIG = os.path.join(HERE, 'orig')
 
 for d in (OUT, CACHE):
@@ -626,13 +627,15 @@ def build_data():
           f'({100 - 100 * (g_packed + d_packed) // (g_raw + d_raw)}% less to load)')
     total = g_packed + d_packed
     bar = build_loading()
+    build_title()
     write_names()
     open(os.path.join(OUT, 'game.i'), 'w').write(
         f'SND_PICKUP = {game.SOUNDS.index("pickup") + 1}\n'
         f'LOAD_TOTAL = {total}\nGFX_ALLOC = {g_alloc}\n'
         f'INS_START = {ins_start}\nINS_SIZE = {ins_size}\nFRAME_MAX = {frame_max}\n'
         f'FC_SIZE = {max(40 * 1024, (frame_max + 16 * 1024 + 3) & ~3)}\n'
-        f'BAR_ROW = {bar[0]}\nBAR_LINES = {bar[1]}\nBAR_COL = {bar[2]}\nBAR_BYTES = {bar[3]}\n')
+        f'BAR_ROW = {bar[0]}\nBAR_LINES = {bar[1]}\nBAR_COL = {bar[2]}\nBAR_BYTES = {bar[3]}\n'
+        f'HAM_PAL = {HAM_PAL}\nHAM_COP = {HAM_COP}\n')
     return room_data
 
 
@@ -643,10 +646,12 @@ def write_names():
         f'n_dat   dc.b    "PROGDIR:{PREFIX}.DAT",0\n'
         f'n_gfx   dc.b    "PROGDIR:{PREFIX}.GFX",0\n'
         f'n_str   dc.b    "PROGDIR:{PREFIX}.STR",0\n'
+        f'n_ttl   dc.b    "PROGDIR:{PREFIX}.TTL",0\n'
+        f'n_intro dc.b    "PROGDIR:SSIntro",0\n'
         f'n_save  dc.b    "PROGDIR:{PREFIX}.SAV"\n')
     prev_vol = volume_name(max(1, CH - 1))
     vol = volume_name(CH, DEMO)
-    old_prev = prev_vol
+    old_prev = prev_vol.replace(VERSIONS[max(1, CH - 1)], 'V1.0')   # (a V1.0 / V1.1 disk before this one)
     st = f'WOSR.ST{CH}'
     open(os.path.join(OUT, 'story.i'), 'w').write(
         f'n_story_in   dc.b "PROGDIR:{st}",0\n'
@@ -678,22 +683,75 @@ def write_dev_i(G, game):
     open(os.path.join(OUT, 'dev.i'), 'w').write('\n'.join(L) + '\n')
 
 
+TITLE_NAMES = {1: 'The Prologue', 2: 'Into Space', 3: 'Asteroid 42', 4: 'Landfall', 5: 'The Crystal Mountains',
+               6: 'The Star Heart', 7: "Vex's Flagship"}
+
+
+def cached_art(key, fn):
+    """a painting (float 256 x 320 x 3) from the cache, or painted now"""
+    p = os.path.join(CACHE, f'art_{key}_v1.npy')
+    if os.path.exists(p):
+        return np.load(p)
+    a = fn()
+    os.makedirs(CACHE, exist_ok=True)
+    np.save(p, a)
+    return a
+
+
 def build_loading():
-    """the loading screen: packed planes, 32 colours, the full bar"""
+    """the loading screen: HAM6 (4096 colours), packed planes, 16 base colours, the full bar"""
     import loading
-    a, full, soft = loading.make(CH)
-    ca, cf, pal = loading.quantize32(a, full, soft)
-    Image.fromarray((pal[ca] * 255).astype(np.uint8)).resize((640, 512), Image.NEAREST).save(
+    import keyart
+    import ham
+    loading_pic = keyart.cached('loading', keyart.loading_art)
+    a, full, exact, keep = loading.make_ham(CH, loading_pic)
+    ca, pal = ham.encode(a / 255.0, keep=keep, exact=exact)
+    cf, pal_f = ham.encode(full / 255.0, keep=keep, exact=exact)
+    # the full bar: the same base colours (only the exact panel rows are used from it)
+    cf = ca.copy()
+    lut = {tuple(c): i for i, c in enumerate(pal)}
+    x0, y0, x1, y1 = loading.HAM_BAR
+    for y in range(y0 + 2, y1 - 2):
+        for x in range(320):
+            c = tuple(int(round(v / 17)) for v in full[y, x])
+            cf[y, x] = lut[c]
+    Image.fromarray((ham.decode(ca, pal) * 255).astype(np.uint8)).resize((640, 512), Image.NEAREST).save(
         os.path.join(OUT, 'loading.png'))
-    planes = WD.picture_bytes(ca.astype(np.int16))
+    Image.fromarray((ham.decode(cf, pal) * 255).astype(np.uint8)).resize((640, 512), Image.NEAREST).save(
+        os.path.join(OUT, 'loading_full.png'))
+    planes = WD.picture_bytes(ca.astype(np.int16), planes=6)
     open(os.path.join(OUT, 'loadpic.zx'), 'wb').write(zx_cached(planes))
-    open(os.path.join(OUT, 'loadpal.bin'), 'wb').write(b''.join(struct.pack('>H', word12(c)) for c in pal))
-    x0, y0, x1, y1 = loading.BAR
-    r0, r1 = y0 + 2, y1 - 3
-    strip = WD.picture_bytes(cf[r0:r1].astype(np.int16))
+    open(os.path.join(OUT, 'loadpal.bin'), 'wb').write(b''.join(struct.pack('>H', word12(c / 15)) for c in pal))
+    r0, r1 = y0 + 2, y1 - 2
+    strip = WD.picture_bytes(cf[r0:r1].astype(np.int16), planes=6)
     open(os.path.join(OUT, 'barstrip.bin'), 'wb').write(strip)
-    c0, c1 = x0 // 8, (x1 - 2) // 8 + 1
+    c0, c1 = (x0 + 2) // 8, (x1 - 2) // 8 + 1
     return r0, r1 - r0, c0, c1 - c0
+
+
+HAM_PAL = 6 * 40 * 256
+HAM_COP = HAM_PAL + 32
+
+
+def build_title():
+    """the painted title screen (HAM6) in PREFIX.TTL: the planes, 16 colours, room for its copper list"""
+    import keyart
+    import ham
+    pic = keyart.cached('title', keyart.title_art)
+    a = (np.clip(pic, 0, 1) * 255).astype(np.uint8).copy()
+    keyart.title_text(a, TITLE_NAMES[CH], CH, DEMO)
+    ex = np.zeros(256, bool)
+    ex[208:] = True
+    ch, pal = ham.encode(a / 255.0, keep=[(255, 216, 112), (224, 236, 255), (20, 8, 40), (150, 140, 200)], exact=ex)
+    Image.fromarray((ham.decode(ch, pal) * 255).astype(np.uint8)).resize((640, 512), Image.NEAREST).save(
+        os.path.join(OUT, 'title_ham.png'))
+    raw = WD.picture_bytes(ch.astype(np.int16), planes=6) + b''.join(struct.pack('>H', word12(c / 15)) for c in pal)
+    raw += bytes(256)                               # the copper list goes here
+    assert len(raw) == HAM_COP + 256
+    p = os.path.join(OUT, PREFIX + '.TTL')
+    open(p, 'wb').write(raw)
+    crunch(p)
+    return pic
 
 
 def crunch(path):
@@ -774,8 +832,9 @@ def build_adf():
     os.makedirs(os.path.join(src, 's'))
     open(os.path.join(src, 's', 'startup-sequence'), 'w').write(f'{PREFIX}\n')
     open(os.path.join(OUT, f'{PREFIX}.info'), 'wb').write(tool_icon())
-    for f in (PREFIX, PREFIX + '.DAT', PREFIX + '.GFX', PREFIX + '.STR', PREFIX + '.info'):
+    for f in (PREFIX, PREFIX + '.DAT', PREFIX + '.GFX', PREFIX + '.STR', PREFIX + '.TTL', PREFIX + '.info'):
         shutil.copy(os.path.join(OUT, f), os.path.join(src, f))
+    shutil.copy(INTRO, os.path.join(src, 'SSIntro'))          # the boot intro: the game runs it first
     if os.environ.get('WOS2_TESTSTORY'):          # a test disk: with the story of the last chapter on it
         disk = disk.replace('.adf', '_TEST.adf')
         subprocess.run([sys.executable, os.path.join(HERE, 'tools', 'storyfile.py'), os.path.join(src, f'WOSR.ST{CH}'),
@@ -809,8 +868,9 @@ def build_whdload():
         f.write(slave, f'{dr}/{PREFIX}.slave')
         f.writestr(f'{dr}/{PREFIX}.info', tool_icon(project=('WHDLoad', [f'SLAVE={PREFIX}.slave', 'PRELOAD'])))
         f.writestr(f'{dr}/ReadMe', readme)
-        for n in (PREFIX, PREFIX + '.DAT', PREFIX + '.GFX', PREFIX + '.STR'):
+        for n in (PREFIX, PREFIX + '.DAT', PREFIX + '.GFX', PREFIX + '.STR', PREFIX + '.TTL'):
             f.write(os.path.join(OUT, n), f'{dr}/data/{n}')
+        f.write(INTRO, f'{dr}/data/SSIntro')
     print(os.path.basename(z), os.path.getsize(z))
     return z
 

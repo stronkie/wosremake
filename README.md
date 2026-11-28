@@ -11,13 +11,13 @@ The text adventure stays as it is: it is still on itch.io and in its own repo.
 
 | Disk | Chapter | Original chapters | Keepsake | Version |
 |---|---|---|---|---|
-| 1 | Chapter One: the Prologue | Prologue 1-3: The Grounds, The Manor, The Launch Pad | scrap of paper | V1.0 |
-| 2 | Chapter Two: Into Space | 1 Into Space, 2 The Derelict Station | space ration | V1.0 |
-| 3 | Chapter Three: Asteroid 42 | 3 Asteroid 42, 4 Space Pirates | rubber chicken | V1.0 |
-| 4 | Chapter Four: Landfall | 5 Landfall, 6 The Village | singing shell | V1.0 |
-| 5 | Chapter Five: The Crystal Mountains | 7 The Crystal Mountains, 8 The Sky Temple | spiked boots | V1.0 |
-| 6 | Chapter Six: The Star Heart | 9 The Star Heart, 10 Repairs | silver horn | V1.0 |
-| 7 | Chapter Seven: Vex's Flagship | 11 Vex's Flagship, 12 The Prison Deck, 13 The Bridge, Epilogue | - | V1.0 |
+| 1 | Chapter One: the Prologue | Prologue 1-3: The Grounds, The Manor, The Launch Pad | scrap of paper | V1.2 |
+| 2 | Chapter Two: Into Space | 1 Into Space, 2 The Derelict Station | space ration | V1.2 |
+| 3 | Chapter Three: Asteroid 42 | 3 Asteroid 42, 4 Space Pirates | rubber chicken | V1.2 |
+| 4 | Chapter Four: Landfall | 5 Landfall, 6 The Village | singing shell | V1.2 |
+| 5 | Chapter Five: The Crystal Mountains | 7 The Crystal Mountains, 8 The Sky Temple | spiked boots | V1.2 |
+| 6 | Chapter Six: The Star Heart | 9 The Star Heart, 10 Repairs | silver horn | V1.2 |
+| 7 | Chapter Seven: Vex's Flagship | 11 Vex's Flagship, 12 The Prison Deck, 13 The Bridge, Epilogue | - | V1.2 |
 
 Every chapter is its own disk and boots by itself. When you finish a chapter the game
 writes your story on that disk (`WOSR.ST2` ... `WOSR.ST7`: the star fragments you found,
@@ -33,13 +33,13 @@ is refused too. Dev mode (F5) skips the check.
 Chicken, untying Ricky and LeChuckle's rematch (disk 3), the wooden monkey and the nose
 glasses (disk 4) come back on disk 7. With all 16 star fragments you get the true ending.
 
-**Free demo:** `WorldOfStronkieRemake_Chapter1_Demo_V1.0.adf` - Part 1, The Grounds,
+**Free demo:** `WorldOfStronkieRemake_Chapter1_Demo_V1.2.adf` - Part 1, The Grounds,
 up to the front door of Ravenmoor Manor.
 
 ## Downloads
 
-- The game: `WorldOfStronkieRemake_Chapter1..7_V1.0.adf` (+ WHDLoad), or
-  `WorldOfStronkieRemake_FullGame_V1.0_ADFs.zip` / `_FullGame_V1.0_WHDLoad.zip`.
+- The game: `WorldOfStronkieRemake_Chapter1..7_V1.2.adf` (+ WHDLoad), or
+  `WorldOfStronkieRemake_FullGame_V1.2_ADFs.zip` / `_FullGame_V1.2_WHDLoad.zip`.
 - In `docs/`: the manual, the disk labels, the box (A3 / A4 and a 3D picture), the map
   (`WorldOfStronkieRemake_Map.png/.pdf`) and the walkthrough (`.pdf/.txt`).
 
@@ -50,8 +50,8 @@ up to the front door of Ravenmoor Manor.
 
 ## Starting the game
 
-**From the floppy:** write `WorldOfStronkieRemake_ChapterN_V1.0.adf` to a disk (disk
-name `Stronkie Remake Ch N V1.0`) and boot from it. Keep the disks writable: the end
+**From the floppy:** write `WorldOfStronkieRemake_ChapterN_V1.2.adf` to a disk (disk
+name `Stronkie Remake Ch N V1.2`) and boot from it. Keep the disks writable: the end
 of a chapter writes your story on it. At the start of the next disk the game asks for
 the disk before it, reads the story and asks for its own disk back.
 
@@ -59,7 +59,7 @@ the disk before it, reads the story and asks for its own disk back.
 `WOSRC2`, `WOSRC2.DAT`, ... for disk 2 and so on) into ONE drawer and double-click the
 icon: then the story goes from chapter to chapter in that drawer by itself.
 
-**WHDLoad:** `WorldOfStronkieRemake_ChapterN_V1.0_WHDLoad.zip` (needs WHDLoad and
+**WHDLoad:** `WorldOfStronkieRemake_ChapterN_V1.2_WHDLoad.zip` (needs WHDLoad and
 kick40063.A600 in DEVS:Kickstarts; F10 quits).
 
 ## Playing
@@ -107,6 +107,17 @@ python3 tools/webplay.py disk.adf outdir steps # plays the disk in vAmigaWeb wit
 The engine (`*.s`) is World of Stronkie II's.
 
 ## Changelog
+
+### V1.2 (2026-11-28) - a painted loading screen and title screen, the boot intro everywhere
+- New loading screen and title screen: painted pictures in HAM (4096 colours on the A500):
+  Ravenmoor Manor in a thunderstorm and the STARRAVEN lifting off (loading), the planet
+  Stronkie seen from space at sunrise (title). The title shows the disk's chapter.
+- The Stronkie Soft boot intro (SSIntro) now plays on every version: all 7 disks, the
+  demo, WHDLoad and the hard drive / CF card drawer. The game starts it itself (SSIntro
+  next to the game), so nothing else has to run it. Mouse button or any key skips it.
+- The disk names are now `Stronkie Remake Ch N V1.2`; a V1.0 / V1.1 disk before it is still found.
+
+### V1.1 (2026-11-27) - Chapter One disk: the boot intro (floppy only, not on itch)
 
 ### V1.0 (2026-11-27) - the complete game
 - All seven disks are V1.0: the full game, published on itch.io.

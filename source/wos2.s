@@ -59,7 +59,8 @@ start   lea     bss_start,a0        ; the variables start at 0
         bhs     .ks
         lea     m_needks,a0
         bra     fail_msg
-.ks     move.l  #CHIP_TOTAL,d0      ; the screens and buffers (no fast memory needed:
+.ks     bsr     run_intro           ; the Stronkie Soft boot intro (SSIntro next to the game)
+        move.l  #CHIP_TOTAL,d0      ; the screens and buffers (no fast memory needed:
                                     ; rooms and speech are read from disk when needed)
         move.l  #MEMF_CHIP|MEMF_CLEAR,d1
         jsr     _LVOAllocMem(a6)
@@ -376,6 +377,29 @@ say_cli                             ; a0 = message: to the CLI, or a window from
         move.l  d4,d1
         jsr     _LVOClose(a6)
 .x      movem.l (sp)+,d2-d4/a2
+        rts
+
+run_intro                           ; SSIntro in the game's drawer: load it, run it, unload it
+        movem.l d2-d7/a2-a6,-(sp)
+        move.l  dosbase,a6
+        move.l  #n_intro,d1
+        jsr     _LVOLoadSeg(a6)
+        tst.l   d0
+        bne     .got
+        move.l  #n_intro+8,d1       ; (no PROGDIR: under WHDLoad)
+        jsr     _LVOLoadSeg(a6)
+        tst.l   d0
+        beq     .x
+.got    move.l  d0,-(sp)
+        lsl.l   #2,d0
+        move.l  d0,a1
+        lea     intro_arg,a0
+        moveq   #1,d0
+        jsr     4(a1)
+        move.l  (sp)+,d1
+        move.l  dosbase,a6
+        jsr     _LVOUnLoadSeg(a6)
+.x      movem.l (sp)+,d2-d7/a2-a6
         rts
 
 load_whole                          ; a0 = name, d1 = memory type -> d0 = memory, d1 = size (0: failed)
@@ -831,6 +855,9 @@ MENU_ITEMS = 12
 game_menu
         tst.b   dlg_on              ; not in the middle of a conversation
         bne     .x
+        movem.l d0-d7/a0-a6,-(sp)
+        bsr     ham_off             ; (the painted title: the menu shows on the normal screen)
+        movem.l (sp)+,d0-d7/a0-a6
         move.b  panel_dark,menu_dark
         move.b  pointer_on,menu_ptr
         clr.b   panel_dark
@@ -1281,6 +1308,7 @@ m_nomem dc.b    10,"World of Stronkie remake: not enough memory free.",10
         dc.b    "(start the game from its own drawer or disk).",10,0
 m_menu_title dc.b "MENU   (F5 or ESC: back to the game)",0
 m_paused dc.b   "Game paused. Press any key.",0
+intro_arg dc.b  10,0
 m_saved dc.b    "Game saved.",0
 m_saveerr dc.b  "I couldn't save the game. Is the disk write-protected?",0
 m_loaderr dc.b  "There is no saved game there.",0
@@ -1368,6 +1396,8 @@ fixed_pal       ds.l    1
 frames          ds.l    1
 zx_head         ds.l    3
 zx_alloc        ds.l    1
+ham_mem         ds.l    1           ; the painted title (HAM) while it shows
+ham_size        ds.l    1
 room_buf        ds.l    1
 old_trap        ds.l    1
 crash_exc       ds.l    1                   ; these four in this order

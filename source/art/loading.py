@@ -295,3 +295,47 @@ if __name__ == '__main__':
     ca, cf, pal = quantize32(a, full, soft)
     out = (pal[ca] * 255).astype(np.uint8)
     Image.fromarray(out).resize((640, 512), Image.NEAREST).save(sys.argv[1] if len(sys.argv) > 1 else 'loading.png')
+
+
+# ------------------------------------------------------------------ V1.2: the HAM loading screen
+HAM_BAR = (22, 215, 299, 224)        # the progress bar (outline included)
+
+
+def make_ham(ch=1, pic=None):
+    """the painted loading screen (keyart.py) with the loading panel at the bottom.
+    -> rgb uint8 (empty bar), rgb uint8 (full bar), exact rows, colours that must be base colours"""
+    if pic is None:
+        import keyart
+        pic = keyart.down(keyart.loading_art())
+    a = (np.clip(pic, 0, 1) * 255).astype(np.uint8).copy()
+    PANEL = (6, 8, 30)
+    EDGE = (80, 200, 255)
+    GREEN = (96, 240, 64)
+    GOLD = (255, 208, 80)
+    SKY = (150, 200, 255)
+    WHITE = (240, 240, 255)
+    # the panel: dark glass with a glowing top line
+    y0 = 201
+    for y in range(y0 - 6, y0):
+        k = (y - (y0 - 6)) / 6
+        a[y] = (a[y] * (1 - k * 0.55)).astype(np.uint8)
+    a[y0:] = PANEL
+    a[y0] = EDGE
+    a[y0 + 1] = (30, 90, 140)
+    text8(a, 22, 205, 'LOADING ADVENTURE...', GREEN)
+    s = f'DISK {ch} OF 7'
+    text8(a, 299 - len(s) * 8, 205, s, SKY)
+    x0, yb0, x1, yb1 = HAM_BAR
+    a[yb0:yb1, x0:x1] = EDGE                     # the frame of the bar
+    a[yb0 + 1:yb1 - 1, x0 + 1:x1 - 1] = PANEL
+    full = a.copy()
+    for sx in range(x0 + 2, x1 - 2, 6):
+        full[yb0 + 2:yb1 - 2, sx:sx + 5] = GREEN
+    for aa in (a, full):
+        text8(aa, 22, 228, LOAD_LINES[ch][0], SKY)
+        text8(aa, 22, 237, LOAD_LINES[ch][1], GOLD)
+        line = 'STRONKIE SOFT (C) 2026 - AMIGA 500'
+        text8(aa, 160 - len(line) * 4, 247, line, WHITE)
+    exact = np.zeros(256, bool)
+    exact[y0:] = True                            # the whole panel: base colours only (sharp text, the bar)
+    return a, full, exact, [PANEL, EDGE, GREEN, GOLD, SKY, WHITE, (30, 90, 140)]

@@ -326,7 +326,7 @@ flush_keys
         rts
 
 ;----------------------------------------------------------------------
-;  the loading screen (320 x 256, 32 colours) with its progress bar,
+;  the loading screen (320 x 256, HAM6: 4096 colours) with its progress bar,
 ;  in the first screen buffers while the data files load (the system
 ;  still runs: the floppy needs it, and its blitter)
 ;----------------------------------------------------------------------
@@ -341,18 +341,32 @@ loading_show
         jsr     _LVOWaitTOF(a6)
         jsr     _LVOWaitTOF(a6)
         move.l  p_copper,a0
-        move.l  #$01005200,(a0)+    ; 5 planes
+        move.l  p_buf0,d0
+        bsr     ham_copper
+        lea     loadpal,a1
+        bsr     ham_colours
+        move.l  #$fffffffe,(a0)+
+        lea     CUSTOM,a5
+        move.l  p_copper,COP1LC(a5)
+        move.w  #$8000|$0200|$0100|$0080,DMACON(a5)
+        st      load_on
+        clr.l   loaded
+        rts
+
+;  a HAM6 screen (320 x 256, 6 planes interleaved) in a copper list:
+;  a0 = the copper list, d0 = the planes -> a0 = after the planes and sprites
+ham_copper
+        move.l  #$01006a00,(a0)+    ; 6 planes, HAM, colour
         move.l  #$01020000,(a0)+
         move.l  #$01040000,(a0)+
         move.l  #$008e2c81,(a0)+
         move.l  #$00902cc1,(a0)+    ; 256 lines
         move.l  #$00920038,(a0)+
         move.l  #$009400d0,(a0)+
-        move.l  #$010800a0,(a0)+    ; modulo 160: interleaved
-        move.l  #$010a00a0,(a0)+
-        move.l  p_buf0,d0
+        move.l  #$010800c8,(a0)+    ; modulo 200: interleaved
+        move.l  #$010a00c8,(a0)+
         move.w  #BPL1PT,d2
-        moveq   #4,d1
+        moveq   #5,d1
 .pl     move.w  d2,(a0)+
         swap    d0
         move.w  d0,(a0)+
@@ -375,22 +389,20 @@ loading_show
         move.w  d0,(a0)+
         addq.w  #2,d2
         dbf     d1,.sp
-        lea     loadpal,a1
+        rts
+
+ham_colours                         ; a1 = 16 colours -> copper moves at a0
         move.w  #COLOR00,d2
-        moveq   #31,d1
+        moveq   #15,d1
 .c      move.w  d2,(a0)+
         move.w  (a1)+,(a0)+
         addq.w  #2,d2
         dbf     d1,.c
-        move.l  #$fffffffe,(a0)+
-        lea     CUSTOM,a5
-        move.l  p_copper,COP1LC(a5)
-        move.w  #$8000|$0200|$0100|$0080,DMACON(a5)
-        st      load_on
-        clr.l   loaded
         rts
 
 loading_bar                         ; the bar shows 'loaded' of LOAD_TOTAL bytes
+        tst.b   load_on             ; (not after the loading screen)
+        beq     .rts
         movem.l d0-d2/a0-a1,-(sp)
         move.l  loaded,d0
         lsr.l   #8,d0
@@ -403,8 +415,8 @@ loading_bar                         ; the bar shows 'loaded' of LOAD_TOTAL bytes
         bmi     .x
         lea     barstrip+BAR_COL,a0
         move.l  p_buf0,a1
-        add.l   #BAR_ROW*ROOM_ROW+BAR_COL,a1
-        moveq   #BAR_LINES*ROOM_PL-1,d2
+        add.l   #BAR_ROW*240+BAR_COL,a1
+        moveq   #BAR_LINES*6-1,d2
 .ln     move.w  d0,d1
 .b      move.b  (a0,d1.w),(a1,d1.w)
         dbf     d1,.b
@@ -412,7 +424,7 @@ loading_bar                         ; the bar shows 'loaded' of LOAD_TOTAL bytes
         lea     40(a1),a1
         dbf     d2,.ln
 .x      movem.l (sp)+,d0-d2/a0-a1
-        rts
+.rts    rts
 
 loading_close                       ; (only when the game does not start)
         tst.b   load_on

@@ -14,7 +14,7 @@ OPS = ['END', 'SAY', 'SAYNW', 'WALK', 'WALKNW', 'FACE', 'PUT', 'PICKUP',
        'IMGON', 'IMGOFF', 'ROOM', 'WAIT', 'SOUND', 'MUSIC', 'DIALOG', 'CUTON',
        'CUTOFF', 'RANDSAY', 'ANIM', 'ANIMNW', 'CARD', 'HAS', 'NOTHAS', 'ENDGAME',
        'FADE', 'COSTUME', 'IFROOM', 'SPEECH', 'CARDNW', 'SETSTATE', 'WAITKEY',
-       'STORYLOAD', 'STORYDEF', 'STORYSAVE', 'STORYVOL', 'RANDJMP', 'IFHERE', 'IFNHERE']
+       'STORYLOAD', 'STORYDEF', 'STORYSAVE', 'STORYVOL', 'RANDJMP', 'IFHERE', 'IFNHERE', 'HAMPIC']
 OP = {n: i for i, n in enumerate(OPS)}
 
 VERBS = ['Walk to', 'Give', 'Pick up', 'Use', 'Open', 'Look at', 'Push', 'Close', 'Talk to', 'Pull']
@@ -165,6 +165,10 @@ class Script:
 
     def waitkey(self):
         return self.op('WAITKEY')
+
+    def hampic(self, on):
+        """1: the painted title (HAM6, PREFIX.TTL) over the screen, 0: back"""
+        return self.op('HAMPIC', 1 if on else 0)
 
     def storyload(self, src, f):
         """src 0: this drawer, 1: the last chapter's disk; sets f if the story was read"""

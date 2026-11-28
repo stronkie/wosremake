@@ -256,19 +256,13 @@ def shipin():
 
 # ------------------------------------------------------------------ the title
 def title():
+    """the title room (32 colours): the top of the painted title screen (keyart.py);
+    the game shows the painted screen itself in HAM over it"""
     from rooms import text_mask
+    import keyart
+    pic = keyart.cached('title', keyart.title_art)[:168]
     cv = base('road', 8)
-    cv.c = cv.c * 0.55
-    t1 = text_mask(cv, 160, 10, 'THE WORLD OF', 1.0, True)
-    cv.glow(t1, '#80a0ff', 6, 0.5)
-    cv.fill(t1, '#c0d0ff')
-    t2 = text_mask(cv, 160, 24, 'STRONKIE', 2.5, True)
-    cv.fill(cv.blur(t2, 0.6), '#100818', 0.9)
-    cv.fill(t2, cv.vgrad([(24, '#a0f0ff'), (44, '#4080ff')]))
-    cv.glow(t2, '#4080ff', 8, 0.35)
-    t3 = text_mask(cv, 160, 52, 'remake', 1.6, True)
-    cv.fill(cv.blur(t3, 0.6), '#100818', 0.9)
-    cv.fill(t3, '#ffd060')
+    cv.c = np.repeat(np.repeat(pic, 2, 0), 2, 1).astype(np.float32)[:cv.h, :cv.w]
     if os.environ.get('WOS2_DEMO'):
         t4 = text_mask(cv, 160, 72, 'DEMO', 1.6, True)
         cv.fill(cv.blur(t4, 0.6), '#200a30', 0.9)
